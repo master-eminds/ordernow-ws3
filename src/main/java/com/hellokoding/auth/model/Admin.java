@@ -15,6 +15,7 @@ public class Admin {
     private String parolaAndroid;
     private Set<Role> roles;
     private Rol rol;
+    private Restaurant restaurant;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -92,5 +93,14 @@ public class Admin {
 
     public void setRol(Rol rol) {
         this.rol = rol;
+    }
+    @ManyToOne
+    @JoinColumn(name="restaurant_id", nullable=false)
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 }

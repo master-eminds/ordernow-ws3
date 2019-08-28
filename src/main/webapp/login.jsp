@@ -35,6 +35,11 @@
 
 <body>
 
+<div>
+
+    <a href="${contextPath}/adaugareRestaurant/0">Adauga restaurant</a>
+    <a href="${contextPath}/vizualizareRestaurante">Vezi restaurante</a>
+</div>
 <div class="splash-container">
     <div class="card ">
         <div class="card-header text-center"><a href="#">

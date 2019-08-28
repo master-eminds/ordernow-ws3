@@ -12,10 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.text.ParseException;
@@ -56,7 +53,19 @@ public class AdminController {
     private AdminValidator adminValidator;
     @Autowired
     private ModificareAdminValidator modificareAdminValidator;
-
+    @RequestMapping(value = "/registration/admin/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Admin administrareAdminWS(@PathVariable("id") Long id) {
+        Admin test = null;
+        if(id == 0 ){
+            test = new Admin();
+        }else{
+            Admin o = adminService.findById(id);
+            o.setPassword(null);
+            test = o;
+        }
+        return test;
+    }
 
     @RequestMapping(value = "/registration/{id}", method = RequestMethod.GET)
   public ModelAndView administrareAdmin(@PathVariable("id") Long id) {
@@ -74,7 +83,7 @@ public class AdminController {
   }
 
     @RequestMapping(value = "/salvareCont", method = RequestMethod.POST)
-    public String adaugareOspatar(@ModelAttribute("adminForm") Admin adminForm, BindingResult bindingResult, Model model) {
+    public String adaugareAdmin(@ModelAttribute("adminForm") Admin adminForm, BindingResult bindingResult, Model model) {
 
 
         if(adminForm.getId()!=null&& adminForm.getId()!=0){

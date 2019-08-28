@@ -16,7 +16,16 @@ public class Meniu {
     @Column(length=100000)
     private byte[] image;
     private int sters;
+    private Restaurant restaurant;
+    @ManyToOne
+    @JoinColumn(name="restaurant_id", nullable=false)
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
 
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

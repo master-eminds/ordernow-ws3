@@ -28,7 +28,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/resources/**", "/registration").permitAll()
                     .antMatchers("/resources/**","/adaugaUser").permitAll()
                     .antMatchers("/resources/**","/mitza").permitAll()
-                    .anyRequest().authenticated()
+                .antMatchers("/resources/**","/adaugareRestaurant").permitAll()
+                .antMatchers("/resources/**","/salvareRestaurant").permitAll()
+
+                .anyRequest().authenticated()
                     .and()
                 .formLogin()
                     .loginPage("/login")

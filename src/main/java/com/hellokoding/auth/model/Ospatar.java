@@ -19,6 +19,16 @@ public class Ospatar implements Comparable{
     private Set<Review> reviews;
     private Set<Comanda> listaComenzi;
     private int sters;
+    private Restaurant restaurant;
+    @ManyToOne
+    @JoinColumn(name="restaurant_id", nullable=false)
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     public Long getId() {
