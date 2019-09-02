@@ -69,16 +69,7 @@ public class RestaurantController {
 
         return model;
     }
-   /* @RequestMapping(value = "/vizualizareMeniuri", method = RequestMethod.GET)
-    public ModelAndView vizualizareMeniuri() {
-        ModelAndView model = new ModelAndView("vizualizareMeniuri");
-        if(Global.listaMeniuri==null||Global.listaMeniuri.size()==0) {
-            Global.listaMeniuri = meniuService.findAll();
-        }
-        model.addObject("meniuri", Global.listaMeniuri);
 
-        return model;
-    }*/
    /* @RequestMapping(value = "/adaugareRestaurant/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Restaurant administrareRestaurantWS(@PathVariable("id") Long id) {
@@ -120,6 +111,7 @@ public class RestaurantController {
 
 
    /* @RequestMapping(value = "/vizualizareRestaurante", method = RequestMethod.GET)
+    @ResponseBody
     public List<Restaurant> getRestaurante()  {
         List<Restaurant> restaurante;
         restaurante=restaurantService.findAll();
