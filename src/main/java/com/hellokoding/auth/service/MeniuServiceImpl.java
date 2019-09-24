@@ -43,11 +43,21 @@ public class MeniuServiceImpl implements MeniuService {
                 .getResultList();
         return meniuri;
     }
+
+    @Override
+    public List<Meniu> findAllByIdRestaurant(Long idRestaurant) {
+        List meniuri = em.createNativeQuery(
+                "select * from meniuri where restaurant_id=:1 and sters=0", Meniu.class)
+                .setParameter(1 ,idRestaurant)
+                .getResultList();
+        return meniuri;
+    }
+
     @Override
     public List<Meniu> findAllByStare(String stare) {
         List meniuri = em.createNativeQuery(
-                "select * from meniuri where stare=:stare and sters=0", Meniu.class)
-                .setParameter("stare", stare)
+                "select * from meniuri where stare=:1 and sters=0", Meniu.class)
+                .setParameter(1, stare)
                 .getResultList();
         return meniuri;    }
 }

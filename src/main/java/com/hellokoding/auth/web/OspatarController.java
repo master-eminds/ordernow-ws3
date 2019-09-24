@@ -2,6 +2,7 @@ package com.hellokoding.auth.web;
 
 import com.hellokoding.auth.model.Ospatar;
 import com.hellokoding.auth.model.Review;
+import com.hellokoding.auth.model.list.OspatarList;
 import com.hellokoding.auth.repository.OspatarRepository;
 import com.hellokoding.auth.service.OspatarService;
 import com.hellokoding.auth.service.ReviewService;
@@ -11,14 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.text.DecimalFormat;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -144,5 +143,24 @@ public class OspatarController {
         model.addObject("listaReviewuri", Global.reviewOspatari.get(idOspatar));
         model.addObject("medieNote", Global.noteOspatari.get(idOspatar));
         return model;
+    }
+
+    //-------GET LISTA OSPATARI--------
+    @RequestMapping(value = "/getListaOspatariByIdRestaurant/{idRestaurant}", method = RequestMethod.GET)
+    @ResponseBody
+    public OspatarList getListaOspatariByIdRestaurant(@PathVariable Long idRestaurant) {
+        List<Ospatar> ospatari=new ArrayList<>();
+        OspatarList ospatarList = new OspatarList();
+
+        try{
+            ospatari = ospatarService.findAllByIdRestaurant(idRestaurant);
+            ospatarList.setResult("OK");
+        }
+        catch (Exception e){
+            ospatarList.setResult("ERR");
+        }
+
+        ospatarList.setOspatarList(ospatari);
+        return ospatarList;
     }
 }

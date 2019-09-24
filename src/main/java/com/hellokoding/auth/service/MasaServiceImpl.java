@@ -33,6 +33,15 @@ public class MasaServiceImpl implements MasaService {
     }
 
     @Override
+    public List<Masa> findAllByIdRestaurant(Long idRestaurant) {
+        List mese= em.createNativeQuery(
+                "select * from mese where sters=0 and restaurant_id=:1", Masa.class)
+                .setParameter(1,idRestaurant)
+                .getResultList();
+        return mese;
+    }
+
+    @Override
     public List<Masa> findAllNesterse() {
         List mese= em.createNativeQuery(
                 "select * from mese where sters=0", Masa.class)

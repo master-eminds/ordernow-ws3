@@ -10,6 +10,7 @@ public interface MasaService {
 
     Masa findById(Long id);
     List<Masa> findAll();
+    List<Masa> findAllByIdRestaurant(Long idRestaurant);
 
     List<Masa> findAllNesterse();
 }

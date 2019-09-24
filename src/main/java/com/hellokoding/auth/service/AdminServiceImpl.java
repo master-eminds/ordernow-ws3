@@ -17,16 +17,10 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Override
-    public void save(Admin admin) {
+    public Admin save(Admin admin) {
         String password= admin.getPassword();
         admin.setPassword(bCryptPasswordEncoder.encode(password));
-        try {
-            admin.setParolaAndroid(Global.criptare(password,Global.cheieCriptare));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        //admin.setRoles(new HashSet<>(roleRepository.findAll()));
-        adminRepository.save(admin);
+        return adminRepository.saveAndFlush(admin);
     }
 
     @Override

@@ -24,6 +24,7 @@ public class Restaurant extends BaseModel {
     private List<Meniu> meniuri;
     private List<Ospatar> ospatari;
     private List<Masa> mese;
+    private List<Comanda> comenzi;
 
     @OneToMany(cascade=ALL, mappedBy="restaurant")
     public List<Admin> getAdmini() {
@@ -52,6 +53,14 @@ public class Restaurant extends BaseModel {
     @OneToMany(cascade=ALL, mappedBy="restaurant")
     public List<Masa> getMese() {
         return mese;
+    }
+    @OneToMany(cascade=ALL, mappedBy="restaurant")
+    public List<Comanda> getComenzi() {
+        return comenzi;
+    }
+
+    public void setComenzi(List<Comanda> comenzi) {
+        this.comenzi = comenzi;
     }
 
     public void setMese(List<Masa> mese) {

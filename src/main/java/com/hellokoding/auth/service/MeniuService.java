@@ -11,6 +11,7 @@ public interface MeniuService {
     Meniu findById(Long id);
     void delete(Long id);
     List<Meniu> findAll();
+    List<Meniu> findAllByIdRestaurant(Long idRestaurant);
     List<Meniu> findTot();
 
     List<Meniu> findAllByStare(String stare);

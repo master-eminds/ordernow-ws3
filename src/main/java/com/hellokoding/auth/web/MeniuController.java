@@ -1,6 +1,7 @@
 package com.hellokoding.auth.web;
 
 import com.hellokoding.auth.model.Meniu;
+import com.hellokoding.auth.model.list.MeniuList;
 import com.hellokoding.auth.repository.MeniuRepository;
 import com.hellokoding.auth.service.MeniuService;
 import com.hellokoding.auth.util.Global;
@@ -119,4 +120,24 @@ public class MeniuController {
 
         return "redirect:/vizualizareMeniuri";
     }
+
+    //-------GET LISTA MENIURI--------
+    @RequestMapping(value = "/getListaMeniuriByIdRestaurant/{idRestaurant}", method = RequestMethod.GET)
+    @ResponseBody
+    public MeniuList getListaMeniuriByIdRestaurant(@PathVariable Long idRestaurant) {
+        List<Meniu> meniuri=new ArrayList<>();
+        MeniuList meniuList = new MeniuList();
+
+        try{
+            meniuri = meniuService.findAllByIdRestaurant(idRestaurant);
+            meniuList.setResult("OK");
+        }
+        catch (Exception e){
+            meniuList.setResult("ERR");
+        }
+
+        meniuList.setMeniuList(meniuri);
+        return meniuList;
+    }
+
 }

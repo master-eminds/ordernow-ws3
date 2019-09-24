@@ -1,11 +1,13 @@
 package com.hellokoding.auth.model;
 
+import com.hellokoding.auth.util.BaseModel;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "admini")
-public class Admin {
+public class Admin extends BaseModel {
     private Long id;
     private String nume;
     private String prenume;

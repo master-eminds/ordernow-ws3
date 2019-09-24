@@ -9,9 +9,4 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
 
-    @Transactional
-    @Modifying
-    @Query(value = "UPDATE restaurante  set activ=0 where id= ?1",
-            nativeQuery = true)
-    void deleteProdus(Long id);
 }

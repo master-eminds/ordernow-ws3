@@ -1,6 +1,7 @@
 package com.hellokoding.auth.web;
 
 import com.hellokoding.auth.model.Masa;
+import com.hellokoding.auth.model.list.MeseList;
 import com.hellokoding.auth.repository.MasaRepository;
 import com.hellokoding.auth.service.MasaService;
 import com.hellokoding.auth.service.SecurityService;
@@ -8,10 +9,10 @@ import com.hellokoding.auth.util.Global;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class MasaController {
@@ -46,5 +47,22 @@ public class MasaController {
         }
         return "redirect:/welcome";
     }
+    //-------GET LISTA MESE--------
+    @RequestMapping(value = "/getListaMeseByIdRestaurant/{idRestaurant}", method = RequestMethod.GET)
+    @ResponseBody
+    public MeseList getListaMeseByIdRestaurant(@PathVariable Long idRestaurant) {
+        List<Masa> mese=new ArrayList<>();
+        MeseList meseList = new MeseList();
 
+        try{
+            mese = masaService.findAllByIdRestaurant(idRestaurant);
+            meseList.setResult("OK");
+        }
+        catch (Exception e){
+            meseList.setResult("ERR");
+        }
+
+        meseList.setMeseList(mese);
+        return meseList;
+    }
 }

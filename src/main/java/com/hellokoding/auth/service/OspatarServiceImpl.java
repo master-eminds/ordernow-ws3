@@ -67,5 +67,14 @@ public class OspatarServiceImpl implements OspatarService {
         return ospatari;
     }
 
+    @Override
+    public List<Ospatar> findAllByIdRestaurant(Long id) {
+        List ospatari= em.createNativeQuery(
+                "select * from ospatari where restaurant_id=?1",Ospatar.class)
+                .setParameter(1,id)
+                .getResultList();
+        return ospatari;
+    }
+
 
 }

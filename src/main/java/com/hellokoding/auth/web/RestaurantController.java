@@ -60,25 +60,13 @@ public class RestaurantController {
         List<InfoRestaurant> infoRestaurante = new ArrayList<>();
         //find personalizat
         try{
-            restaurante = restaurantService.findAll();
+            infoRestaurante = restaurantService.getInfoAllRestaurants();
             infoRestaurantList.setResult("OK");
         }
         catch (Exception e){
             infoRestaurantList.setResult("ERR");
         }
 
-        for (Restaurant r : restaurante) {
-            if(r.getActiv()==1) {
-                InfoRestaurant restaurant = new InfoRestaurant();
-                restaurant.setId(r.getId());
-                restaurant.setDenumire(r.getDenumire());
-                restaurant.setDescriere(r.getDescriere());
-                restaurant.setImagine(r.getImagine());
-                restaurant.setBarCode(r.getBarCode());
-                restaurant.setComandaOnline(r.getComandaOnline());
-                infoRestaurante.add(restaurant);
-            }
-        }
         infoRestaurantList.setInfoRestaurantList(infoRestaurante);
         return infoRestaurantList;
     }

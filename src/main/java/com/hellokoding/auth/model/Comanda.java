@@ -1,22 +1,35 @@
 package com.hellokoding.auth.model;
 
+import com.hellokoding.auth.util.BaseModel;
+
 import javax.persistence.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Set;
 
 import static javax.persistence.CascadeType.ALL;
 
 @Entity
 @Table(name="comenzi")
-public class Comanda  implements  Comparable{
+public class Comanda  extends BaseModel implements  Comparable {
 
     private Long id;
-    private Set<ItemComanda> listaItemComanda;
+    private List<ItemComanda> listaItemComanda;
     private Ospatar ospatar;
     private Masa masa;
     private String data;
     private Double valoare;
+    private Restaurant restaurant;
+    @ManyToOne
+    @JoinColumn(name="restaurant_id", nullable=false)
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
@@ -27,11 +40,11 @@ public class Comanda  implements  Comparable{
         this.id = id;
     }
     @OneToMany(cascade=ALL, mappedBy="comanda")
-    public Set<ItemComanda> getListaItemComanda() {
+    public List<ItemComanda> getListaItemComanda() {
         return listaItemComanda;
     }
 
-    public void setListaItemComanda(Set<ItemComanda> listaItemComanda) {
+    public void setListaItemComanda(List<ItemComanda> listaItemComanda) {
         this.listaItemComanda = listaItemComanda;
     }
     @ManyToOne

@@ -13,5 +13,6 @@ public interface OspatarService {
 
     List<Ospatar> findAll();
     List<Ospatar>  findAllNestersi();
+    List<Ospatar> findAllByIdRestaurant(Long id);
     void delete(Long id);
 }
