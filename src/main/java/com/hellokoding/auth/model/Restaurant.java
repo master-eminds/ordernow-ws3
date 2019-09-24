@@ -1,23 +1,25 @@
 package com.hellokoding.auth.model;
 
+import com.hellokoding.auth.util.BaseModel;
+
 import javax.persistence.*;
 import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
 @Entity
 @Table(name = "restaurante")
-public class Restaurant {
+public class Restaurant extends BaseModel {
 
     private Long id;
     private String denumire;
     private String descriere;
-
     @Lob
     @Basic(fetch = FetchType.LAZY)
     @Column(length=100000)
     private byte[] imagine;
     private int comandaOnline;
     private int barCode;
+    private int activ;
     private List<Admin> admini;
     private List<Meniu> meniuri;
     private List<Ospatar> ospatari;
@@ -103,5 +105,13 @@ public class Restaurant {
 
     public void setBarCode(int barCode) {
         this.barCode = barCode;
+    }
+
+    public int getActiv() {
+        return activ;
+    }
+
+    public void setActiv(int activ) {
+        this.activ = activ;
     }
 }

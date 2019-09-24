@@ -47,5 +47,10 @@ public class RestaurantServiceImpl implements RestaurantService {
         return restaurantRepository.findAll();
     }
 
+    @Override
+    public void delete(Long id) {
+        restaurantRepository.delete(id);
+    }
+
 
 }
