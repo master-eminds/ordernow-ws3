@@ -23,13 +23,13 @@ public class ProdusServiceImpl implements ProdusService {
     }
 
     @Override
-    public void saveOrUpdate(Produs produs) {
+    public Produs saveOrUpdate(Produs produs) {
         if(produs.getId()!=null){
             produsRepository.delete(produs.getId());
         }
-            produsRepository.save(produs);
-
+            return produsRepository.saveAndFlush(produs);
     }
+
 
     @Override
     public void delete(Long id) {
@@ -63,17 +63,17 @@ public class ProdusServiceImpl implements ProdusService {
     @Override
     public List<Produs> findAllByVizibilitate(Long categorieId, String vizibilitate) {
         List produse = em.createNativeQuery(
-                "select * from produse where categorie_id=:categorieId and vizibilitate =:vizibilitate and sters=0", Produs.class)
-                .setParameter("categorieId", categorieId)
-                .setParameter("vizibilitate", vizibilitate)
+                "select * from produse where categorie_id=:1 and vizibilitate =:2 and sters=0", Produs.class)
+                .setParameter(1, categorieId)
+                .setParameter(2, vizibilitate)
                 .getResultList();
         return produse;    }
 
     @Override
     public List<Produs> findAllByCategorie(Long categorieId) {
         List produse = em.createNativeQuery(
-                "select * from produse where categorie_id=:categorieId and sters=0", Produs.class)
-                .setParameter("categorieId", categorieId)
+                "select * from produse where categorie_id=:1 and sters=0", Produs.class)
+                .setParameter(1, categorieId)
                 .getResultList();
         return produse;
     }

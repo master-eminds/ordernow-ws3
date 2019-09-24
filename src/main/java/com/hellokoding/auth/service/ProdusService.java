@@ -9,7 +9,7 @@ public interface ProdusService {
 
 
     Produs save(Produs produs);
-    void saveOrUpdate(Produs produs);
+    Produs saveOrUpdate(Produs produs);
     void delete(Long id);
     List<Produs> findAll();
     List<CountProdus> numarProduseComandate();

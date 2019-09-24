@@ -1,5 +1,7 @@
 package com.hellokoding.auth.model;
 
+import com.hellokoding.auth.util.BaseModel;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -7,7 +9,7 @@ import static javax.persistence.CascadeType.ALL;
 
 @Entity
 @Table(name="produse")
-public class Produs {
+public class Produs extends BaseModel {
     private Long id;
     private String denumire;
     private Float pret;
