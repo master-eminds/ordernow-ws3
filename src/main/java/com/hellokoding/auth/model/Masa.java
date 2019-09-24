@@ -1,5 +1,7 @@
 package com.hellokoding.auth.model;
 
+import com.hellokoding.auth.util.BaseModel;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -7,7 +9,7 @@ import static javax.persistence.CascadeType.ALL;
 
 @Entity
 @Table(name="mese")
-public class Masa {
+public class Masa extends BaseModel {
     private Long id;
     private List<Comanda> comenzi;
     private int sters;

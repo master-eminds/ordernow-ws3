@@ -4,11 +4,9 @@ import com.hellokoding.auth.model.Masa;
 import com.hellokoding.auth.model.list.MeseList;
 import com.hellokoding.auth.repository.MasaRepository;
 import com.hellokoding.auth.service.MasaService;
-import com.hellokoding.auth.service.SecurityService;
-import com.hellokoding.auth.util.Global;
+import com.hellokoding.auth.util.BaseModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -22,30 +20,33 @@ public class MasaController {
     @Autowired
     private MasaRepository masaRepository;
 
-    @Autowired
-    private SecurityService securityService;
+    //------ADD MASA--------
+    @RequestMapping(value = "/addMasa", method = RequestMethod.POST)
+    public Masa addMasa(@RequestBody Masa masa) {
+        Masa infoMasa= new Masa();
+        try{
+            infoMasa= masaService.save(masa);
+            infoMasa.setResult("OK");
+        }catch (Exception e){
+            e.printStackTrace();
+            infoMasa.setResult("ERR");
+        }
 
-    @RequestMapping(value = "/adaugaMasa", method = RequestMethod.POST)
-    public String adaugaMasa(@ModelAttribute("adaugaMasaForm") Masa masaForm, Model model) {
-
-       Masa masa= masaService.save(masaForm);
-        Global.listaMese.add(masa);
-        return "redirect:/welcome";
+        return infoMasa;
     }
 
-    @RequestMapping(value = "/stergeMasa/{id}", method = RequestMethod.GET)
-
-    public String stergeMasa(@PathVariable("id") Long id) {
-        masaRepository.deleteMasa(id);
-        int sters=0;
-        for(int i=0;i< Global.listaMese.size() && sters==0;i++){
-            Masa masa= Global.listaMese.get(i);
-            if(masa.getId().equals(id)){
-                sters=1;
-                Global.listaMese.remove(i);
-            }
+    //------DELETE MASA
+    @RequestMapping(value = "/deleteMasa/{id}", method = RequestMethod.PUT)
+    public BaseModel deleteMasa(@PathVariable("id") Long id) {
+        BaseModel info= new BaseModel();
+        try{
+            masaRepository.deleteMasa(id);
+            info.setResult("OK");
+        }catch(Exception e){
+            e.printStackTrace();
+            info.setResult("ERR");
         }
-        return "redirect:/welcome";
+        return info;
     }
     //-------GET LISTA MESE--------
     @RequestMapping(value = "/getListaMeseByIdRestaurant/{idRestaurant}", method = RequestMethod.GET)

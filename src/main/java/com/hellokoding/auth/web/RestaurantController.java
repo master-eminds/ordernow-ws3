@@ -1,20 +1,13 @@
 package com.hellokoding.auth.web;
 
-import com.hellokoding.auth.model.Admin;
 import com.hellokoding.auth.model.InfoRestaurant;
 import com.hellokoding.auth.model.Restaurant;
 import com.hellokoding.auth.model.list.InfoRestaurantList;
 import com.hellokoding.auth.service.RestaurantService;
 import com.hellokoding.auth.util.BaseModel;
-import com.hellokoding.auth.util.Global;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,7 +80,7 @@ public class RestaurantController {
         return restaurant;
     }
     //-------delete RESTAURANT BY ID--------
-    @RequestMapping(value = "/deleteRestaurantById/{idRestaurant}", method = RequestMethod.GET)
+    @RequestMapping(value = "/deleteRestaurantById/{idRestaurant}", method = RequestMethod.PUT)
     @ResponseBody
     public BaseModel deleteRestaurantById(@PathVariable Long idRestaurant) {
 
