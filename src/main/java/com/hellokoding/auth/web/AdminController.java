@@ -3,13 +3,11 @@ package com.hellokoding.auth.web;
 import com.hellokoding.auth.model.Admin;
 import com.hellokoding.auth.model.InfoAdmin;
 import com.hellokoding.auth.service.AdminService;
+import com.hellokoding.auth.util.BaseModel;
 import com.hellokoding.auth.util.Global;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class AdminController {
@@ -44,6 +42,20 @@ public class AdminController {
             adminInfo.setResult("ERR");
         }
         return adminInfo;
+    }
+
+    //------DELETE OSPATAR
+    @RequestMapping(value = "/deleteAdmin/{id}", method = RequestMethod.PUT)
+    public BaseModel deleteAdmin(@PathVariable("id") Long id) {
+        BaseModel resp = new BaseModel();
+        try {
+            adminService.delete(id);
+            resp.setResult("OK");
+        } catch (Exception e) {
+            e.printStackTrace();
+            resp.setResult("ERR");
+        }
+        return resp;
     }
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public Admin login(@RequestBody InfoAdmin infoAdmin) {

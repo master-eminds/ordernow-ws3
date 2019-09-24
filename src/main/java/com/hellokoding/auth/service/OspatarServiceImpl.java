@@ -4,6 +4,7 @@ import com.hellokoding.auth.model.Ospatar;
 import com.hellokoding.auth.repository.OspatarRepository;
 import com.hellokoding.auth.util.Global;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -15,6 +16,8 @@ public class OspatarServiceImpl implements OspatarService {
 
     @Autowired
     OspatarRepository ospatarRepository;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
     @PersistenceContext
     EntityManager em;
 
@@ -40,6 +43,16 @@ public class OspatarServiceImpl implements OspatarService {
     @Override
     public Ospatar findByEmail(String email) {
         return ospatarRepository.findByEmail(email);
+    }
+
+    @Override
+    public void update(Ospatar ospatar) {
+        if(ospatar.getId()!=null){
+            ospatarRepository.delete(ospatar.getId());
+        }
+        String password= ospatar.getParola();
+        ospatar.setParola(bCryptPasswordEncoder.encode(password));
+        ospatarRepository.save(ospatar);
     }
 
     @Override

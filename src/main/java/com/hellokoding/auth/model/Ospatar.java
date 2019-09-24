@@ -1,6 +1,8 @@
 package com.hellokoding.auth.model;
 
 
+import com.hellokoding.auth.util.BaseModel;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -8,7 +10,7 @@ import static javax.persistence.CascadeType.ALL;
 
 @Entity
 @Table(name = "ospatari")
-public class Ospatar implements Comparable{
+public class Ospatar extends BaseModel implements Comparable{
 
     private Long id;
     private String nume;

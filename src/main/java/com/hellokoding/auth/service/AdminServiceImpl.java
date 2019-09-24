@@ -26,17 +26,17 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public void update(Admin admin) {
 
-            if(admin.getId()!=null){
+        if(admin.getId()!=null){
                 adminRepository.delete(admin.getId());
             }
         String password= admin.getPassword();
         admin.setPassword(bCryptPasswordEncoder.encode(password));
-        try {
-            admin.setParolaAndroid(Global.criptare(password,Global.cheieCriptare));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         adminRepository.save(admin);
+    }
+
+    @Override
+    public void delete(Long id) {
+        adminRepository.delete(id);
     }
 
     @Override
