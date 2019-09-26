@@ -57,18 +57,18 @@ public class ProdusController {
         }
         return resp;
     }
+
     //-------GET LISTA PRODUSE BY CATEGORIE--------
     @RequestMapping(value = "/getProductsByIdCateg/{idCategory}", method = RequestMethod.GET)
     @ResponseBody
     public InfoProductList getProductsByIdCateg(@PathVariable Long idCategory) {
-        InfoProductList infoProductList= new InfoProductList();
+        InfoProductList infoProductList = new InfoProductList();
         List<InfoProduct> products;
-        try{
+        try {
             products = produsService.findAllByCategorie(idCategory);
             infoProductList.setInfoProductList(products);
             infoProductList.setResult("OK");
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             infoProductList.setResult("ERR");
         }
 
@@ -79,12 +79,11 @@ public class ProdusController {
     @RequestMapping(value = "/getProductById/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Product getProductById(@PathVariable Long id) {
-        Product product= null;
-        try{
-            product= produsService.findById(id);
+        Product product = null;
+        try {
+            product = produsService.findById(id);
             product.setResult("OK");
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             product.setResult("ERR");
         }
 
