@@ -33,7 +33,6 @@ public class RestaurantServiceImpl implements RestaurantService {
         if(restaurant.getId()!=null){
             restaurantRepository.delete(restaurant.getId());
         }
-
         return  restaurantRepository.saveAndFlush(restaurant);
     }
 
@@ -50,8 +49,8 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public List<InfoRestaurant> getInfoAllRestaurants() {
         List restaurante= em.createNativeQuery(
-                "select id,denumire,descriere, barCode, imagine, comandaOnline from restaurante" +
-                        " where activ=?1",InfoRestaurant.class)
+                "select id, name, description, subtitle, qrCode, meniu_id from restaurante" +
+                        " where active=?1",InfoRestaurant.class)
                 .setParameter(1,1)
                 .getResultList();
         return restaurante;

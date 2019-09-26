@@ -68,7 +68,7 @@
                                 <a href="${contextPath}/vizualizareMeniuri">Vizualizare meniuri</a>
                             </li>
                             <li>
-                                <a href="${contextPath}/administrareMeniu/0">Adaugare meniu</a>
+                                <a href="${contextPath}/administrareMeniu/0">Adaugare menu</a>
                             </li>
 
                         </ul>
@@ -122,7 +122,7 @@
                                 <a href="${contextPath}/vizualizareMeniuri">Vizualizare meniuri</a>
                             </li>
                             <li>
-                                <a href="${contextPath}/administrareMeniu/0">Adaugare meniu</a>
+                                <a href="${contextPath}/administrareMeniu/0">Adaugare menu</a>
                             </li>
 
                         </ul>
@@ -231,7 +231,7 @@
                                             <div class="mess__item" >
 
                                                 <div class="content">
-                                                    <h5>${sugestie.categorie.toUpperCase()}</h5>
+                                                    <h5>${sugestie.category.toUpperCase()}</h5>
                                                     <c:if test="${sugestie.continut.length() gt 21}">
                                                         <p>${sugestie.continut.substring(0,20)}...</p>
                                                     </c:if>

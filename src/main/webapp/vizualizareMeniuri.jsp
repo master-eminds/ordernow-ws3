@@ -58,7 +58,7 @@
                                         <a class="nav-link" href="/vizualizareMeniuri" >Vizualizare meniuri</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/administrareMeniu/0">Adaugare meniu</a>
+                                        <a class="nav-link" href="/administrareMeniu/0">Adaugare menu</a>
                                     </li>
 
 
@@ -133,23 +133,23 @@
                         <div class="row">
 
                             <c:if test="${not empty meniuri}">
-                                <c:forEach var="meniu" items="${meniuri}">
+                                <c:forEach var="menu" items="${meniuri}">
                                 <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
                                     <div class="product-thumbnail">
                                         <div class="product-img-head" style="margin:0 auto;" >
                                             <div class="product-img" style="margin:0 auto; height: 220px">
-                                                <img src="${String(meniu.image)}" style="margin: 0 auto; max-height: 80%; max-width: 80%; object-fit: cover" alt="" class="img-fluid"></div>
-                                            <div class=""><a href="vizualizareCategorii/${meniu.id}" class="product-wishlist-btn"><i class="fas fa-eye"></i></a></div>
+                                                <img src="${String(menu.image)}" style="margin: 0 auto; max-height: 80%; max-width: 80%; object-fit: cover" alt="" class="img-fluid"></div>
+                                            <div class=""><a href="vizualizareCategorii/${menu.id}" class="product-wishlist-btn"><i class="fas fa-eye"></i></a></div>
                                         </div>
                                         <div class="product-content" style="margin: 0 auto;height: 260px" >
                                                 <div class="product-content-head" style="margin: 0 auto; height: 100px">
-                                                <h3 class="product-title">${meniu.denumire}</h3>
-                                                <div class="product-price">${meniu.stare.toUpperCase()}</div>
+                                                <h3 class="product-title">${menu.denumire}</h3>
+                                                <div class="product-price">${menu.stare.toUpperCase()}</div>
                                             </div>
                                             <div class="product-btn">
-                                                <a href="${contextPath}/vizualizareCategorii/${meniu.id}" class="btn btn-primary">Vezi detalii</a>
-                                                <a href="${contextPath}/administrareMeniu/${meniu.id}" class="btn btn-outline-light">Modifica</a>
-                                                <a href="${contextPath}/stergeMeniu/${meniu.id}" class="btn btn-danger btn-sm">Sterge</a>
+                                                <a href="${contextPath}/vizualizareCategorii/${menu.id}" class="btn btn-primary">Vezi detalii</a>
+                                                <a href="${contextPath}/administrareMeniu/${menu.id}" class="btn btn-outline-light">Modifica</a>
+                                                <a href="${contextPath}/stergeMeniu/${menu.id}" class="btn btn-danger btn-sm">Sterge</a>
 
                                             </div>
                                         </div>
@@ -174,7 +174,7 @@
                     <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
                         <div class="product-sidebar">
                             <div class="product-sidebar-widget">
-                                <a href="${contextPath}/administrareMeniu/0/"class="btn btn-danger btn-sm">Adauga un meniu</a>
+                                <a href="${contextPath}/administrareMeniu/0/"class="btn btn-danger btn-sm">Adauga un menu</a>
                             </div>
                             <div class="product-sidebar-widget">
                                 <h4 class="mb-0">Filtrare</h4>

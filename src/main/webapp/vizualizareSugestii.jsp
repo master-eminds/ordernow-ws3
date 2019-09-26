@@ -73,7 +73,7 @@
                                 <a href="${contextPath}/vizualizareMeniuri">Vizualizare meniuri</a>
                             </li>
                             <li>
-                                <a href="${contextPath}/administrareMeniu/0">Adaugare meniu</a>
+                                <a href="${contextPath}/administrareMeniu/0">Adaugare menu</a>
                             </li>
 
                         </ul>
@@ -125,7 +125,7 @@
                                 <a href="/vizualizareMeniuri" >Vizualizare meniuri</a>
                             </li>
                             <li >
-                                <a  href="/administrareMeniu/0">Adaugare meniu</a>
+                                <a  href="/administrareMeniu/0">Adaugare menu</a>
                             </li>
                         </ul>
                     </li>
@@ -231,7 +231,7 @@
                                         </label>
                                     </div>
                                     <div class="email-list-detail"><span class="date float-right"><span class="icon">
-                </span>${sugestie.data}</span><span class="from">${sugestie.categorie.toUpperCase()}</span>
+                </span>${sugestie.data}</span><span class="from">${sugestie.category.toUpperCase()}</span>
                                         <p class="msg">${sugestie.continut}</p>
                                     </div>
                                 </div>
@@ -247,7 +247,7 @@
                                     </div>
                                     <div class="email-list-detail">
                                         <span class="date float-right">${sugestie.data}</span>
-                                        <span class="from">${sugestie.categorie.toUpperCase()}</span>
+                                        <span class="from">${sugestie.category.toUpperCase()}</span>
                                         <p class="msg">${sugestie.continut}</p>
                                     </div>
                                 </div>

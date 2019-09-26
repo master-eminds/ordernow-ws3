@@ -1,20 +1,20 @@
 package com.hellokoding.auth.service;
 
-import com.hellokoding.auth.model.Meniu;
+import com.hellokoding.auth.model.Menu;
 
 import java.util.List;
 
 public interface MeniuService {
 
-    Meniu save(Meniu meniu);
+    Menu save(Menu menu);
 
-    Meniu findById(Long id);
+    Menu findById(Long id);
     void delete(Long id);
-    List<Meniu> findAll();
-    List<Meniu> findAllByIdRestaurant(Long idRestaurant);
-    List<Meniu> findTot();
+    List<Menu> findAll();
+    Menu findByIdRestaurant(Long idRestaurant);
+    List<Menu> findTot();
 
-    List<Meniu> findAllByStare(String stare);
+    List<Menu> findAllByStare(String stare);
 
 
 }

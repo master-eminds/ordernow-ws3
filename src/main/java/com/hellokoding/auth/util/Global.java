@@ -70,11 +70,11 @@ public static List<Ospatar> listaOspatari=new ArrayList<>();
 
 
     //Meniuri
-    public static List<Meniu> listaMeniuri=new ArrayList<>();
-    public static List<Produs> listaProduse=new ArrayList<>();
-    public static List<Categorie> listaCategorii=new ArrayList<>();
-    public static Map<Long, List<Categorie>> mapCategoriiByMeniu= new HashMap<Long, List<Categorie>>();
-    public static Map<Long, List<Produs>> mapProduseByCategorie= new HashMap<Long, List<Produs>>();
+    public static List<Menu> listaMeniuri=new ArrayList<>();
+    public static List<Product> listaProduse=new ArrayList<>();
+    public static List<Category> listaCategorii=new ArrayList<>();
+    public static Map<Long, List<Category>> mapCategoriiByMeniu= new HashMap<Long, List<Category>>();
+    public static Map<Long, List<Product>> mapProduseByCategorie= new HashMap<Long, List<Product>>();
 
 
 

@@ -8,11 +8,16 @@ import static javax.persistence.CascadeType.ALL;
 public class InfoRestaurant {
 
     private Long id;
-    private String denumire;
-    private String descriere;
-    private byte[] imagine;
-    private int comandaOnline;
-    private int barCode;
+    private String name;
+    private String subTitle;
+    private String description;
+    private List<Image> images;
+    private int onlineOrder;
+    private int qrCode;
+    private int nrComments;
+    private int likes;
+    private int meniuId;
+
 
     public Long getId() {
         return id;
@@ -22,43 +27,75 @@ public class InfoRestaurant {
         this.id = id;
     }
 
-    public String getDenumire() {
-        return denumire;
+    public String getName() {
+        return name;
     }
 
-    public void setDenumire(String denumire) {
-        this.denumire = denumire;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDescriere() {
-        return descriere;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescriere(String descriere) {
-        this.descriere = descriere;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public byte[] getImagine() {
-        return imagine;
+    public List<Image> getImages() {
+        return images;
     }
 
-    public void setImagine(byte[] imagine) {
-        this.imagine = imagine;
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 
-    public int getComandaOnline() {
-        return comandaOnline;
+    public int getOnlineOrder() {
+        return onlineOrder;
     }
 
-    public void setComandaOnline(int comandaOnline) {
-        this.comandaOnline = comandaOnline;
+    public void setOnlineOrder(int onlineOrder) {
+        this.onlineOrder = onlineOrder;
     }
 
-    public int getBarCode() {
-        return barCode;
+    public int getQrCode() {
+        return qrCode;
     }
 
-    public void setBarCode(int barCode) {
-        this.barCode = barCode;
+    public void setQrCode(int qrCode) {
+        this.qrCode = qrCode;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    public int getMeniuId() {
+        return meniuId;
+    }
+
+    public void setMeniuId(int meniuId) {
+        this.meniuId = meniuId;
+    }
+
+    public String getSubTitle() {
+        return subTitle;
+    }
+
+    public void setSubTitle(String subTitle) {
+        this.subTitle = subTitle;
+    }
+
+    public int getNrComments() {
+        return nrComments;
+    }
+
+    public void setNrComments(int nrComments) {
+        this.nrComments = nrComments;
     }
 }

@@ -13,7 +13,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Administrare produs</title>
+    <title>Administrare product</title>
 
     <!-- Fontfaces CSS-->
     <link href="${contextPath}/resources/tema/css/font-face.css" rel="stylesheet" media="all">
@@ -68,7 +68,7 @@
                                 <a href="${contextPath}/vizualizareMeniuri">Vizualizare meniuri</a>
                             </li>
                             <li>
-                                <a href="${contextPath}/administrareMeniu/0">Adaugare meniu</a>
+                                <a href="${contextPath}/administrareMeniu/0">Adaugare menu</a>
                             </li>
 
                         </ul>
@@ -120,7 +120,7 @@
                                 <a href="/vizualizareMeniuri" >Vizualizare meniuri</a>
                             </li>
                             <li >
-                                <a  href="/administrareMeniu/0">Adaugare meniu</a>
+                                <a  href="/administrareMeniu/0">Adaugare menu</a>
                             </li>
                         </ul>
                     </li>
@@ -235,12 +235,12 @@
                                         </div>
                                     </spring:bind>
 
-                                    <spring:bind path="categorie">
+                                    <spring:bind path="category">
                                             <div class="form-group ${status.error ? 'has-error' : ''}">
 
-                                            <label for="categorie" class=" form-control-label">Selectati categoria</label>
-                                        <form:select path="categorie" id="categorie">
-                                            <form:options items="${meniu.categorii}"  itemLabel="denumire" itemValue="id"/>
+                                            <label for="category" class=" form-control-label">Selectati categoria</label>
+                                        <form:select path="category" id="category">
+                                            <form:options items="${menu.categorii}"  itemLabel="denumire" itemValue="id"/>
                                         </form:select>
 
 

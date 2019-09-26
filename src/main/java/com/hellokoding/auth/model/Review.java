@@ -9,7 +9,7 @@ public class Review {
     private Long id;
     private String comentariu;
     private float nota;
-    private Produs produs;
+    private Product product;
     private Ospatar ospatar;
 
     @Id
@@ -40,12 +40,12 @@ public class Review {
 
     @ManyToOne
     @JoinColumn(name="id_produs", nullable=false)
-    public Produs getProdus() {
-        return produs;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProdus(Produs produs) {
-        this.produs = produs;
+    public void setProduct(Product product) {
+        this.product = product;
     }
     @ManyToOne
     @JoinColumn(name="id_ospatar", nullable=false)

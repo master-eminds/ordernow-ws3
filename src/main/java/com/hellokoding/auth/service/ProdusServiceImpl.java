@@ -1,6 +1,7 @@
 package com.hellokoding.auth.service;
 
-import com.hellokoding.auth.model.Produs;
+import com.hellokoding.auth.model.InfoProduct;
+import com.hellokoding.auth.model.Product;
 import com.hellokoding.auth.repository.ProdusRepository;
 import com.hellokoding.auth.util.CountProdus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +19,16 @@ public class ProdusServiceImpl implements ProdusService {
     @PersistenceContext
     private EntityManager em;
     @Override
-    public Produs save(Produs produs) {
-        return produsRepository.saveAndFlush(produs);
+    public Product save(Product product) {
+        return produsRepository.saveAndFlush(product);
     }
 
     @Override
-    public Produs saveOrUpdate(Produs produs) {
-        if(produs.getId()!=null){
-            produsRepository.delete(produs.getId());
+    public Product saveOrUpdate(Product product) {
+        if(product.getId()!=null){
+            produsRepository.delete(product.getId());
         }
-            return produsRepository.saveAndFlush(produs);
+            return produsRepository.saveAndFlush(product);
     }
 
 
@@ -37,9 +38,9 @@ public class ProdusServiceImpl implements ProdusService {
     }
 
     @Override
-    public List<Produs> findAll() {
+    public List<Product> findAll() {
         List produse= em.createNativeQuery(
-                "select * from produse where sters=0", Produs.class)
+                "select * from produse where sters=0", Product.class)
                 .getResultList();
         return produse;
     }
@@ -56,23 +57,23 @@ public class ProdusServiceImpl implements ProdusService {
     }
 
     @Override
-    public Produs findById(Long id) {
+    public Product findById(Long id) {
         return produsRepository.findOne(id);
     }
 
     @Override
-    public List<Produs> findAllByVizibilitate(Long categorieId, String vizibilitate) {
+    public List<Product> findAllByVizibilitate(Long categorieId, String vizibilitate) {
         List produse = em.createNativeQuery(
-                "select * from produse where categorie_id=:1 and vizibilitate =:2 and sters=0", Produs.class)
+                "select * from produse where categorie_id=:1 and vizibilitate =:2 and sters=0", Product.class)
                 .setParameter(1, categorieId)
                 .setParameter(2, vizibilitate)
                 .getResultList();
         return produse;    }
 
     @Override
-    public List<Produs> findAllByCategorie(Long categorieId) {
+    public List<InfoProduct> findAllByCategorie(Long categorieId) {
         List produse = em.createNativeQuery(
-                "select * from produse where categorie_id=:1 and sters=0", Produs.class)
+                "select id,name,description,image,price from produse where categorie_id=:1 and active=1", InfoProduct.class)
                 .setParameter(1, categorieId)
                 .getResultList();
         return produse;

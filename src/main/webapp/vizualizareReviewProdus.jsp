@@ -39,7 +39,7 @@
     <!-- Main CSS-->
     <link href="${contextPath}/resources/tema/css/theme.css" rel="stylesheet" media="all">
 
-    <title>Evaluari produs</title>
+    <title>Evaluari product</title>
 </head>
 
 <body>
@@ -84,7 +84,7 @@
                                         <a class="nav-link" href="/vizualizareMeniuri" >Vizualizare meniuri</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/administrareMeniu/0">Adaugare meniu</a>
+                                        <a class="nav-link" href="/administrareMeniu/0">Adaugare menu</a>
                                     </li>
 
 
@@ -147,7 +147,7 @@
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="${contextPath}/statisticiReviewProduse" class="breadcrumb-link">Statistici evaluari produse</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Evaluari produs</li>  </ol>
+                                            <li class="breadcrumb-item active" aria-current="page">Evaluari product</li>  </ol>
                                     </nav>
                                 </div>
                             </div>

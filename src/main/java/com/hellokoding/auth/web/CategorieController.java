@@ -1,7 +1,10 @@
 package com.hellokoding.auth.web;
 
-import com.hellokoding.auth.model.Categorie;
-import com.hellokoding.auth.model.Meniu;
+import com.hellokoding.auth.model.Category;
+import com.hellokoding.auth.model.InfoCategory;
+import com.hellokoding.auth.model.Menu;
+import com.hellokoding.auth.model.list.CategorieList;
+import com.hellokoding.auth.model.list.InfoCategoryList;
 import com.hellokoding.auth.repository.CategorieRepository;
 import com.hellokoding.auth.service.CategorieService;
 import com.hellokoding.auth.service.MeniuService;
@@ -11,10 +14,7 @@ import com.hellokoding.auth.validator.CategorieValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.UnsupportedEncodingException;
@@ -40,11 +40,11 @@ private CategorieValidator categorieValidator;
             public ModelAndView vizualizareCategorii(@PathVariable ("meniu_id") Long meniu_id, @PathVariable("vizibilitate") String vizibilitate) {
             ModelAndView model = new ModelAndView("vizualizareCategorii");
 
-          List<Categorie> listaCategorii=new ArrayList<>();
-          for(Categorie categorie: Global.mapCategoriiByMeniu.get(meniu_id)){
-              if (categorie.getVizibilitate().equals(vizibilitate)){
-                  listaCategorii.add(categorie);
-              }
+          List<Category> listaCategorii=new ArrayList<>();
+          for(Category category : Global.mapCategoriiByMeniu.get(meniu_id)){
+              /*if (category.getVizibilitate().equals(vizibilitate)){
+                  listaCategorii.add(category);
+              }*/
           }
                   //categorieService.findAllByVizibilitate(meniu_id,vizibilitate);
 
@@ -56,7 +56,7 @@ private CategorieValidator categorieValidator;
     public ModelAndView vizualizareCategorii(@PathVariable("meniu_id") Long meniu_id) {
         ModelAndView model = new ModelAndView("vizualizareCategorii");
         if(Global.mapCategoriiByMeniu.get(meniu_id)==null||Global.mapCategoriiByMeniu.get(meniu_id).size()==0) {
-           Global.mapCategoriiByMeniu.put(meniu_id, categorieService.findAllByMeniuId(meniu_id));
+          // Global.mapCategoriiByMeniu.put(meniu_id, categorieService.findAllByMeniuId(meniu_id));
         }
         model.addObject("categorii", Global.mapCategoriiByMeniu.get(meniu_id));
         model.addObject("meniu_id",meniu_id);
@@ -67,55 +67,55 @@ private CategorieValidator categorieValidator;
     public ModelAndView registration(@PathVariable("categorie_id") Long categorie_id,@PathVariable("meniu_id") Long meniu_id) {
         ModelAndView model = new ModelAndView("administrareCategorie");
         if(categorie_id == 0 ){
-            Meniu meniu= meniuService.findById(meniu_id);
-            Categorie c= new Categorie(meniu);
+            /*Menu menu = meniuService.findById(meniu_id);
+            Category c= new Category(menu);
             if(c.getVizibilitate()==null){
                 c.setVizibilitate("0");
-            }
-            model.addObject("categorieForm", c);
+            }*/
+           // model.addObject("categorieForm", c);
             model.addObject("add","true");
         }else{
-            Categorie c = categorieService.findById(categorie_id);
+            Category c = categorieService.findById(categorie_id);
             model.addObject("categorieForm",c);
             model.addObject("add","false");
-            model.addObject("imageSrc",new String(c.getImagine()));
+           // model.addObject("imageSrc",new String(c.getImagine()));
         }
         return model;
     }
 
 
     @RequestMapping(value = "/salvareCategorie/{meniu_id}", method = RequestMethod.POST)
-    public String adaugareMeniu(@ModelAttribute("categorieForm") Categorie categorieForm, @PathVariable("meniu_id") Long meniu_id, BindingResult bindingResult) throws UnsupportedEncodingException, SQLException {
+    public String adaugareMeniu(@ModelAttribute("categorieForm") Category categoryForm, @PathVariable("meniu_id") Long meniu_id, BindingResult bindingResult) throws UnsupportedEncodingException, SQLException {
 
-        categorieValidator.validate(categorieForm,bindingResult);
+        categorieValidator.validate(categoryForm,bindingResult);
         if(bindingResult.hasErrors()){
             return "administrareCategorie";
         }
-        categorieForm.setMeniu(meniuService.findById(meniu_id));
+        //categoryForm.setMenu(meniuService.findById(meniu_id));
         if(bindingResult.hasErrors()){
             return "administrareCategorie";
         }
-        Categorie categorie=categorieService.save(categorieForm);
-        //modificare categorie
-        if(categorieForm.getId()!=0){
+        Category category =categorieService.save(categoryForm);
+        //modificare category
+        if(categoryForm.getId()!=0){
             if (Global.mapCategoriiByMeniu.get(meniu_id)!=null&&Global.mapCategoriiByMeniu.get(meniu_id).size()!=0){
-                List<Categorie> listaVeche=  stergeCategorie(meniu_id,categorie);
-                listaVeche.add(categorie);
+                List<Category> listaVeche=  stergeCategorie(meniu_id, category);
+                listaVeche.add(category);
                 Global.mapCategoriiByMeniu.replace(meniu_id,listaVeche);
             }
         }
-        //adaugare categorie
+        //adaugare category
         else {
-            //daca exista deja macar o categorie in meniu, actualizam lista veche adaugand categoria noua
+            //daca exista deja macar o category in meniu, actualizam lista veche adaugand categoria noua
             if (Global.mapCategoriiByMeniu.get(meniu_id)!=null&&Global.mapCategoriiByMeniu.get(meniu_id).size()!=0){
-                List<Categorie> listaVeche= Global.mapCategoriiByMeniu.get(meniu_id);
-                listaVeche.add(categorie);
+                List<Category> listaVeche= Global.mapCategoriiByMeniu.get(meniu_id);
+                listaVeche.add(category);
                 Global.mapCategoriiByMeniu.replace(meniu_id,listaVeche);
             }
-            // daca nu exista nicio categorie in meniu, adaugam noi o lista cu categ noua
+            // daca nu exista nicio category in meniu, adaugam noi o lista cu categ noua
             else {
-                List<Categorie> listaVeche = new ArrayList<>();
-                listaVeche.add(categorie);
+                List<Category> listaVeche = new ArrayList<>();
+                listaVeche.add(category);
                 Global.mapCategoriiByMeniu.put(meniu_id, listaVeche);
             }
         }
@@ -123,12 +123,12 @@ private CategorieValidator categorieValidator;
         return "redirect:/vizualizareCategorii/"+meniu_id;
     }
 
-    private List<Categorie> stergeCategorie(Long meniu_id, Categorie categorie) {
-        List<Categorie> listaVeche= Global.mapCategoriiByMeniu.get(meniu_id);
+    private List<Category> stergeCategorie(Long meniu_id, Category category) {
+        List<Category> listaVeche= Global.mapCategoriiByMeniu.get(meniu_id);
         int sters=0;
         for(int i=0;i<listaVeche.size() && sters==0;i++){
-            Categorie categorie1=listaVeche.get(i);
-            if(categorie1.getId().equals(categorie.getId())){
+            Category category1 =listaVeche.get(i);
+            if(category1.getId().equals(category.getId())){
                 listaVeche.remove(i);
                 sters=1;
             }
@@ -140,13 +140,31 @@ private CategorieValidator categorieValidator;
     @RequestMapping(value = "/stergeCategorie/{categorie_id}/{meniu_id}", method = RequestMethod.GET)
 
     public String stergeMeniu(@PathVariable("categorie_id") Long categorie_id,@PathVariable("meniu_id") Long meniu_id) {
-        Categorie categorie=categorieService.findById(categorie_id);
+        Category category =categorieService.findById(categorie_id);
         categorieRepository.deleteCategorie(categorie_id);
 
-        List<Categorie> listaVeche=stergeCategorie(meniu_id,categorie);
-       // List<Categorie> listaVeche= Global.mapCategoriiByMeniu.get(meniu_id);
+        List<Category> listaVeche=stergeCategorie(meniu_id, category);
+       // List<Category> listaVeche= Global.mapCategoriiByMeniu.get(meniu_id);
         Global.mapCategoriiByMeniu.replace(meniu_id,listaVeche);
 
         return "redirect:/vizualizareCategorii/"+meniu_id;
+    }
+
+    //-------GET LISTA CATEGORII--------
+    @RequestMapping(value = "/getCategoriesByIdMenu/{idMenu}", method = RequestMethod.GET)
+    @ResponseBody
+    public InfoCategoryList getCategoriesByIdMenu(@PathVariable Long idMenu) {
+        InfoCategoryList infoCategoryList= new InfoCategoryList();
+        List<InfoCategory> categories;
+        try{
+            categories = categorieService.findAllInfoByMeniuId(idMenu);
+            infoCategoryList.setInfoCategoryList(categories);
+            infoCategoryList.setResult("OK");
+        }
+        catch (Exception e){
+            infoCategoryList.setResult("ERR");
+        }
+
+        return infoCategoryList;
     }
 }

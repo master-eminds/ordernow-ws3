@@ -1,6 +1,7 @@
 package com.hellokoding.auth.service;
 
-import com.hellokoding.auth.model.Categorie;
+import com.hellokoding.auth.model.Category;
+import com.hellokoding.auth.model.InfoCategory;
 import com.hellokoding.auth.repository.CategorieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,8 @@ public class CategorieServiceImpl implements CategorieService {
     private EntityManager em;
 
     @Override
-    public Categorie save(Categorie categorie) {
-        return categorieRepository.saveAndFlush(categorie);
+    public Category save(Category category) {
+        return categorieRepository.saveAndFlush(category);
 
     }
 
@@ -40,34 +41,27 @@ public class CategorieServiceImpl implements CategorieService {
     }
 
     @Override
-    public Categorie findById(Long id) {
+    public Category findById(Long id) {
         return categorieRepository.findOne(id);
     }
 
 
 
     @Override
-    public List<Categorie> findAll() {
+    public List<Category> findAll() {
         List categorii= em.createNativeQuery(
-                "select * from categorii where sters=0", Categorie.class)
+                "select * from categorii where active=0", Category.class)
                 .getResultList();
         return categorii;
     }
 
     @Override
-    public List<Categorie> findAllByMeniuId(Long meniu_id) {
+    public List<InfoCategory> findAllInfoByMeniuId(Long meniu_id) {
         List categorie = em.createNativeQuery(
-                "select * from categorii where meniu_id=:meniuId and sters =0", Categorie.class)
-                .setParameter("meniuId", meniu_id)
+                "select id,name,description,image from categorii where meniu_id=:1 and active =0", InfoCategory.class)
+                .setParameter(1, meniu_id)
                 .getResultList();
         return categorie;   }
 
-    @Override
-    public List<Categorie> findAllByVizibilitate(Long meniuId,String vizibilitate) {
-        List categorie = em.createNativeQuery(
-                "select * from categorii where meniu_id=:meniuId and vizibilitate =:vizibilitate and sters=0", Categorie.class)
-                .setParameter("meniuId", meniuId)
-                .setParameter("vizibilitate", vizibilitate)
-                .getResultList();
-        return categorie;    }
+
 }

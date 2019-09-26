@@ -1,6 +1,6 @@
 package com.hellokoding.auth.service;
 
-import com.hellokoding.auth.model.Meniu;
+import com.hellokoding.auth.model.Menu;
 import com.hellokoding.auth.repository.MeniuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,12 +18,12 @@ public class MeniuServiceImpl implements MeniuService {
     private EntityManager em;
 
     @Override
-    public Meniu save(Meniu meniu) {
-        return meniuRepository.saveAndFlush(meniu);
+    public Menu save(Menu menu) {
+        return meniuRepository.saveAndFlush(menu);
     }
 
     @Override
-    public Meniu findById(Long id) {
+    public Menu findById(Long id) {
         return meniuRepository.findOne(id);
     }
 
@@ -33,30 +33,30 @@ public class MeniuServiceImpl implements MeniuService {
     }
 
     @Override
-    public List<Meniu> findTot() {
+    public List<Menu> findTot() {
         return meniuRepository.findAll();
     }
     @Override
-    public List<Meniu> findAll() {
+    public List<Menu> findAll() {
         List meniuri= em.createNativeQuery(
-                "select * from meniuri where sters=0", Meniu.class)
+                "select * from meniuri where sters=0", Menu.class)
                 .getResultList();
         return meniuri;
     }
 
     @Override
-    public List<Meniu> findAllByIdRestaurant(Long idRestaurant) {
-        List meniuri = em.createNativeQuery(
-                "select * from meniuri where restaurant_id=:1 and sters=0", Meniu.class)
+    public Menu findByIdRestaurant(Long idRestaurant) {
+        Object meniu = em.createNativeQuery(
+                "select * from meniuri where restaurant_id=:1 and active=0", Menu.class)
                 .setParameter(1 ,idRestaurant)
-                .getResultList();
-        return meniuri;
+                .getSingleResult();
+        return (Menu) meniu;
     }
 
     @Override
-    public List<Meniu> findAllByStare(String stare) {
+    public List<Menu> findAllByStare(String stare) {
         List meniuri = em.createNativeQuery(
-                "select * from meniuri where stare=:1 and sters=0", Meniu.class)
+                "select * from meniuri where stare=:1 and active=0", Menu.class)
                 .setParameter(1, stare)
                 .getResultList();
         return meniuri;    }

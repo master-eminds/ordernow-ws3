@@ -1,7 +1,6 @@
 package com.hellokoding.auth.model.list;
 
 import com.hellokoding.auth.model.ItemComanda;
-import com.hellokoding.auth.model.Produs;
 import com.hellokoding.auth.util.BaseModel;
 
 import java.util.List;

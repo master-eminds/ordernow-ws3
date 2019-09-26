@@ -1,9 +1,11 @@
 package com.hellokoding.auth.web;
 
-import com.hellokoding.auth.model.Meniu;
+import com.hellokoding.auth.model.Menu;
 import com.hellokoding.auth.model.list.MeniuList;
 import com.hellokoding.auth.repository.MeniuRepository;
+import com.hellokoding.auth.service.CategorieService;
 import com.hellokoding.auth.service.MeniuService;
+import com.hellokoding.auth.service.OfferService;
 import com.hellokoding.auth.util.Global;
 import com.hellokoding.auth.validator.MeniuValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,10 @@ import java.util.List;
 public class MeniuController {
     @Autowired
     private MeniuService meniuService;
+    @Autowired
+    private CategorieService categorieService;
+    @Autowired
+    private OfferService offerService;
     @Autowired
     private MeniuRepository meniuRepository;
 
@@ -48,12 +54,12 @@ public class MeniuController {
         if(Global.listaMeniuri==null||Global.listaMeniuri.size()==0) {
            Global.listaMeniuri = meniuService.findAll();
         }
-        List<Meniu> listaByStare=new ArrayList<>();
-        for(Meniu m: Global.listaMeniuri){
-            if(m.getStare().equals(stare)){
+        List<Menu> listaByStare=new ArrayList<>();
+        for(Menu m: Global.listaMeniuri){
+
+        }/*  if(m.getStare().equals(stare)){
                 listaByStare.add(m);
-            }
-        }
+            }*/
         model.addObject("meniuri", listaByStare);
 
         return model;
@@ -63,14 +69,14 @@ public class MeniuController {
         ModelAndView model = new ModelAndView("administrareMeniu");
 
         if(id == 0 ){
-            Meniu m= new Meniu();
-            if(m.getStare()==null){
+            Menu m= new Menu();
+            /*if(m.getStare()==null){
                 m.setStare("0");
-            }
+            }*/
             model.addObject("meniuForm", m);
             model.addObject("add","true");
         }else{
-            Meniu m = meniuService.findById(id);
+            Menu m = meniuService.findById(id);
             model.addObject("meniuForm",m);
             model.addObject("add","false");
             model.addObject("imageSrc",new String(m.getImage()));
@@ -81,25 +87,25 @@ public class MeniuController {
 
 
     @RequestMapping(value = "/salvareMeniu", method = RequestMethod.POST)
-    public String adaugareMeniu(@ModelAttribute("meniuForm") Meniu meniuForm, BindingResult bindingResult)  {
+    public String adaugareMeniu(@ModelAttribute("meniuForm") Menu menuForm, BindingResult bindingResult)  {
 
-        meniuValidator.validate(meniuForm,bindingResult);
+        meniuValidator.validate(menuForm,bindingResult);
         if(bindingResult.hasErrors()){
             return "administrareMeniu";
         }
-        if(meniuForm.getId()!=null){
+        if(menuForm.getId()!=null){
             int sters=0;
             for(int i=0;i<Global.listaMeniuri.size() && sters==0;i++){
-                Meniu meniu=Global.listaMeniuri.get(i);
-                if(meniu.getId().equals(meniuForm.getId())){
+                Menu menu =Global.listaMeniuri.get(i);
+                if(menu.getId().equals(menuForm.getId())){
                     Global.listaMeniuri.remove(i);
                     sters=1;
                 }
             }
         }
 
-        Meniu meniu=meniuService.save(meniuForm);
-        Global.listaMeniuri.add(meniu);
+        Menu menu =meniuService.save(menuForm);
+        Global.listaMeniuri.add(menu);
         return "redirect:/vizualizareMeniuri";
     }
 
@@ -109,8 +115,8 @@ public class MeniuController {
 
         int sters=0;
         for(int i=0;i<Global.listaMeniuri.size() && sters==0;i++){
-            Meniu meniu=Global.listaMeniuri.get(i);
-            if(meniu.getId().equals(meniu_id)){
+            Menu menu =Global.listaMeniuri.get(i);
+            if(menu.getId().equals(meniu_id)){
                 Global.listaMeniuri.remove(i);
                 sters=1;
             }
@@ -122,22 +128,20 @@ public class MeniuController {
     }
 
     //-------GET LISTA MENIURI--------
-    @RequestMapping(value = "/getListaMeniuriByIdRestaurant/{idRestaurant}", method = RequestMethod.GET)
+    @RequestMapping(value = "/getMenuByIdRestaurant/{idRestaurant}", method = RequestMethod.GET)
     @ResponseBody
-    public MeniuList getListaMeniuriByIdRestaurant(@PathVariable Long idRestaurant) {
-        List<Meniu> meniuri=new ArrayList<>();
-        MeniuList meniuList = new MeniuList();
+    public Menu getMenuByIdRestaurant(@PathVariable Long idRestaurant) {
+        Menu menu = new Menu();
 
         try{
-            meniuri = meniuService.findAllByIdRestaurant(idRestaurant);
-            meniuList.setResult("OK");
+            menu = meniuService.findByIdRestaurant(idRestaurant);
+            menu.setResult("OK");
         }
         catch (Exception e){
-            meniuList.setResult("ERR");
+            menu.setResult("ERR");
         }
 
-        meniuList.setMeniuList(meniuri);
-        return meniuList;
+        return menu;
     }
 
 }

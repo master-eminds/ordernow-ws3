@@ -8,7 +8,7 @@ public class ItemComanda {
 
     private Long id;
     private Integer cantitate;
-    private Produs produs;
+    private Product product;
     private Comanda comanda;
     private Double valoare;
     @Id
@@ -32,12 +32,12 @@ public class ItemComanda {
 
     @ManyToOne
     @JoinColumn(name="produs_id", nullable=false)
-    public Produs getProdus() {
-        return produs;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProdus(Produs produs) {
-        this.produs = produs;
+    public void setProduct(Product product) {
+        this.product = product;
     }
     @ManyToOne
     @JoinColumn(name="comanda_id", nullable=false)

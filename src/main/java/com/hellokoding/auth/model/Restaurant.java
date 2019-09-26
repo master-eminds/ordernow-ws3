@@ -11,17 +11,18 @@ import static javax.persistence.CascadeType.ALL;
 public class Restaurant extends BaseModel {
 
     private Long id;
-    private String denumire;
-    private String descriere;
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
-    @Column(length=100000)
-    private byte[] imagine;
-    private int comandaOnline;
-    private int barCode;
-    private int activ;
+    private String name;
+    private String subTitle;
+    private String description;
+    private List<Image> images;
+    private int onlineOrder;
+    private int qrCode;
+    private int active;
+    private List<Comment> comments;
+    private int likes;
+    private int meniu_id;
+
     private List<Admin> admini;
-    private List<Meniu> meniuri;
     private List<Ospatar> ospatari;
     private List<Masa> mese;
     private List<Comanda> comenzi;
@@ -34,14 +35,15 @@ public class Restaurant extends BaseModel {
     public void setAdmini(List<Admin> admini) {
         this.admini = admini;
     }
-    @OneToMany(cascade=ALL, mappedBy="restaurant")
-    public List<Meniu> getMeniuri() {
-        return meniuri;
+
+    public int getMeniu_id() {
+        return meniu_id;
     }
 
-    public void setMeniuri(List<Meniu> meniuri) {
-        this.meniuri = meniuri;
+    public void setMeniu_id(int meniu_id) {
+        this.meniu_id = meniu_id;
     }
+
     @OneToMany(cascade=ALL, mappedBy="restaurant")
     public List<Ospatar> getOspatari() {
         return ospatari;
@@ -76,51 +78,75 @@ public class Restaurant extends BaseModel {
         this.id = id;
     }
 
-    public String getDenumire() {
-        return denumire;
+    public String getName() {
+        return name;
     }
 
-    public void setDenumire(String denumire) {
-        this.denumire = denumire;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDescriere() {
-        return descriere;
+    public String getSubTitle() {
+        return subTitle;
     }
 
-    public void setDescriere(String descriere) {
-        this.descriere = descriere;
+    public void setSubTitle(String subTitle) {
+        this.subTitle = subTitle;
     }
 
-    public byte[] getImagine() {
-        return imagine;
+    public String getDescription() {
+        return description;
     }
 
-    public void setImagine(byte[] imagine) {
-        this.imagine = imagine;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    @OneToMany(cascade=ALL, mappedBy="restaurant")
+    public List<Image> getImages() {
+        return images;
     }
 
-    public int getComandaOnline() {
-        return comandaOnline;
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 
-    public void setComandaOnline(int comandaOnline) {
-        this.comandaOnline = comandaOnline;
+    public int getOnlineOrder() {
+        return onlineOrder;
     }
 
-    public int getBarCode() {
-        return barCode;
+    public void setOnlineOrder(int onlineOrder) {
+        this.onlineOrder = onlineOrder;
     }
 
-    public void setBarCode(int barCode) {
-        this.barCode = barCode;
+    public int getQrCode() {
+        return qrCode;
     }
 
-    public int getActiv() {
-        return activ;
+    public void setQrCode(int qrCode) {
+        this.qrCode = qrCode;
     }
 
-    public void setActiv(int activ) {
-        this.activ = activ;
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
 }

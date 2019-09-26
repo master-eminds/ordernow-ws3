@@ -57,7 +57,7 @@
                                         <a class="nav-link" href="/vizualizareMeniuri" >Vizualizare meniuri</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/administrareMeniu/0">Adaugare meniu</a>
+                                        <a class="nav-link" href="/administrareMeniu/0">Adaugare menu</a>
                                     </li>
 
 

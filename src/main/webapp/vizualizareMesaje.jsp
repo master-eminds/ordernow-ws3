@@ -67,7 +67,7 @@
                                 <a href="${contextPath}/vizualizareMeniuri">Vizualizare meniuri</a>
                             </li>
                             <li>
-                                <a href="${contextPath}/administrareMeniu/0">Adaugare meniu</a>
+                                <a href="${contextPath}/administrareMeniu/0">Adaugare menu</a>
                             </li>
 
                         </ul>
@@ -118,7 +118,7 @@
                                 <a href="/vizualizareMeniuri" >Vizualizare meniuri</a>
                             </li>
                             <li >
-                                <a  href="/administrareMeniu/0">Adaugare meniu</a>
+                                <a  href="/administrareMeniu/0">Adaugare menu</a>
                             </li>
                         </ul>
                     </li>

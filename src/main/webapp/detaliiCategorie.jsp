@@ -58,7 +58,7 @@
                                         <a class="nav-link" href="/vizualizareMeniuri" >Vizualizare meniuri</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/administrareMeniu/0">Adaugare meniu</a>
+                                        <a class="nav-link" href="/administrareMeniu/0">Adaugare menu</a>
                                     </li>
 
 
@@ -134,27 +134,27 @@
                         <div class="row">
 
                             <c:if test="${not empty produse}">
-                                <c:forEach var="produs" items="${produse}">
+                                <c:forEach var="product" items="${produse}">
                                 <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
                                     <div class="product-thumbnail">
                                         <div class="product-img-head" style="margin: 0 auto;">
                                             <div class="product-img" style="margin: 0 auto; height: 220px">
-                                                <img src="${String(produs.imagine)}" style="margin: 0 auto; max-height: 80%; max-width: 80%; object-fit: cover" alt="" class="img-fluid"></div>
+                                                <img src="${String(product.imagine)}" style="margin: 0 auto; max-height: 80%; max-width: 80%; object-fit: cover" alt="" class="img-fluid"></div>
 
                                         </div>
                                         <div class="product-content" style="margin: 0 auto; height: 290px">
                                             <div class="product-content-head" style="margin: 0 auto; height: 220px">
-                                                <h3 class="product-title">${produs.denumire}</h3>
-                                                <div class="product-price">${produs.pret} lei</div>
-                                                <h2 class="product-title">${produs.vizibilitate.toUpperCase()}</h2>
-                                                <h2 class="product-title">Gramaj: ${produs.gramaj} ${produs.unitateMasura}</h2>
-                                                <h2 class="product-title">Ingrediente: ${produs.ingrediente}</h2>
-                                                <h2 class="product-title">Descriere: ${produs.descriere}</h2>
+                                                <h3 class="product-title">${product.denumire}</h3>
+                                                <div class="product-price">${product.pret} lei</div>
+                                                <h2 class="product-title">${product.vizibilitate.toUpperCase()}</h2>
+                                                <h2 class="product-title">Gramaj: ${product.gramaj} ${product.unitateMasura}</h2>
+                                                <h2 class="product-title">Ingrediente: ${product.ingrediente}</h2>
+                                                <h2 class="product-title">Descriere: ${product.descriere}</h2>
 
                                             </div>
                                             <div class="product-btn">
-                                                <a href="${contextPath}/administrareProdus/${produs.id}/${produs.categorie.id}/${produs.meniu_id}" class="btn btn-outline-light">Modifica</a>
-                                                <a href="${contextPath}/stergeProdus/${produs.id}/${produs.categorie.id}/${meniu_id}" class="btn btn-danger btn-sm">Sterge</a>
+                                                <a href="${contextPath}/administrareProdus/${product.id}/${product.category.id}/${product.meniu_id}" class="btn btn-outline-light">Modifica</a>
+                                                <a href="${contextPath}/stergeProdus/${product.id}/${product.category.id}/${meniu_id}" class="btn btn-danger btn-sm">Sterge</a>
 
                                             </div>
                                         </div>
@@ -180,7 +180,7 @@
                     <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
                         <div class="product-sidebar">
                             <div class="product-sidebar-widget">
-                                <a href="${contextPath}/administrareProdus/0/${categorie_id}/${meniu_id}" class="btn btn-danger btn-sm">Adauga un produs</a>
+                                <a href="${contextPath}/administrareProdus/0/${categorie_id}/${meniu_id}" class="btn btn-danger btn-sm">Adauga un product</a>
                             </div>
                             <div class="product-sidebar-widget">
                                 <h4 class="product-sidebar-widget-title">Vizibilitate</h4>

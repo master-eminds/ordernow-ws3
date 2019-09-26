@@ -1,7 +1,7 @@
 package com.hellokoding.auth.util;
 
-import com.hellokoding.auth.model.Categorie;
-import com.hellokoding.auth.model.Meniu;
+import com.hellokoding.auth.model.Category;
+import com.hellokoding.auth.model.Menu;
 import com.hellokoding.auth.service.CategorieService;
 import com.hellokoding.auth.service.MeniuService;
 import com.hellokoding.auth.service.ProdusService;
@@ -64,11 +64,11 @@ public class ThreadMeniuriSiCategorii implements DisposableBean, Runnable {
             Global.listaMeniuri=meniuService.findAll();
             Global.mapCategoriiByMeniu= new HashMap<>();
             Global.mapProduseByCategorie= new HashMap<>();
-            for(Meniu m: Global.listaMeniuri){
+            for(Menu m: Global.listaMeniuri){
                 Global.mapCategoriiByMeniu.put(m.getId(), categorieService.findAllByMeniuId(m.getId()));
             }
-            List<Categorie> listaCateg=categorieService.findAll();
-            for(Categorie c: listaCateg){
+            List<Category> listaCateg=categorieService.findAll();
+            for(Category c: listaCateg){
                 Global.mapProduseByCategorie.put(c.getId(), produsService.findAllByCategorie(c.getId()));
             }
             if(Global.listaMese!=null && Global.mapCategoriiByMeniu.size()!=0 && Global.mapProduseByCategorie.size()!=0)

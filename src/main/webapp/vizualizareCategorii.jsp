@@ -59,7 +59,7 @@
                                         <a class="nav-link" href="/vizualizareMeniuri" >Vizualizare meniuri</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/administrareMeniu/0">Adaugare meniu</a>
+                                        <a class="nav-link" href="/administrareMeniu/0">Adaugare menu</a>
                                     </li>
 
 
@@ -136,26 +136,26 @@
                         <div class="row">
 
                             <c:if test="${not empty categorii}">
-                                <c:forEach var="categorie" items="${categorii}">
+                                <c:forEach var="category" items="${categorii}">
                                 <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
                                     <div class="product-thumbnail">
                                         <div class="product-img-head" style="margin: 0 auto;" >
                                             <div class="product-img" style="margin: 0 auto; height: 220px">
-                                               <img src="${String(categorie.imagine)}" style="margin: 0 auto; max-height:80%; max-width: 80%; object-fit: cover" alt="" class="img-fluid"></div>
-                                            <div class=""><a href="${contextPath}/detaliiCategorie/${categorie.id}/${meniu_id}" class="product-wishlist-btn"><i class="fas fa-eye"></i></a></div>
+                                               <img src="${String(category.imagine)}" style="margin: 0 auto; max-height:80%; max-width: 80%; object-fit: cover" alt="" class="img-fluid"></div>
+                                            <div class=""><a href="${contextPath}/detaliiCategorie/${category.id}/${meniu_id}" class="product-wishlist-btn"><i class="fas fa-eye"></i></a></div>
                                         </div>
                                         <div class="product-content" style="margin: 0 auto;height: 260px">
                                             <div class="product-content-head" style="margin: 0 auto; height: 100px">
-                                                <h3 class="product-title">${categorie.denumire}</h3>
-                                                <div class="product-price">${categorie.vizibilitate.toUpperCase()}</div>
+                                                <h3 class="product-title">${category.denumire}</h3>
+                                                <div class="product-price">${category.vizibilitate.toUpperCase()}</div>
                                             </div>
                                             <div class="product-btn" >
-                                                <a href="${contextPath}/detaliiCategorie/${categorie.id}/${meniu_id}" class="btn btn-primary">Vezi detalii</a>
-                                                <a href="${contextPath}/administrareCategorie/${categorie.id}/${meniu_id}" class="btn btn-outline-light">Modifica</a>
+                                                <a href="${contextPath}/detaliiCategorie/${category.id}/${meniu_id}" class="btn btn-primary">Vezi detalii</a>
+                                                <a href="${contextPath}/administrareCategorie/${category.id}/${meniu_id}" class="btn btn-outline-light">Modifica</a>
 <%--
-                                               <c:if test="${empty categorie.produse}">
+                                               <c:if test="${empty category.produse}">
 --%>
-                                                    <a href="${contextPath}/stergeCategorie/${categorie.id}/${meniu_id}" class="btn btn-danger btn-sm">Sterge</a>
+                                                    <a href="${contextPath}/stergeCategorie/${category.id}/${meniu_id}" class="btn btn-danger btn-sm">Sterge</a>
 
 <%--
                                                 </c:if>
@@ -184,7 +184,7 @@
                     <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
                         <div class="product-sidebar">
                             <div class="product-sidebar-widget">
-                                <a href="${contextPath}/administrareCategorie/0/${meniu_id}"class="btn btn-danger btn-sm">Adauga o categorie</a>
+                                <a href="${contextPath}/administrareCategorie/0/${meniu_id}"class="btn btn-danger btn-sm">Adauga o category</a>
                             </div>
                             <div class="product-sidebar-widget">
                                 <h4 class="mb-0">Filtrare</h4>

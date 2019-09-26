@@ -13,7 +13,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Administrare meniu</title>
+    <title>Administrare menu</title>
 
     <!-- Fontfaces CSS-->
     <link href="${contextPath}/resources/tema/css/font-face.css" rel="stylesheet" media="all">
@@ -67,7 +67,7 @@
                                 <a href="${contextPath}/vizualizareMeniuri">Vizualizare meniuri</a>
                             </li>
                             <li>
-                                <a href="${contextPath}/administrareMeniu/0">Adaugare meniu</a>
+                                <a href="${contextPath}/administrareMeniu/0">Adaugare menu</a>
                             </li>
 
                         </ul>
@@ -119,7 +119,7 @@
                                 <a href="/vizualizareMeniuri" >Vizualizare meniuri</a>
                             </li>
                             <li >
-                                <a  href="/administrareMeniu/0">Adaugare meniu</a>
+                                <a  href="/administrareMeniu/0">Adaugare menu</a>
                             </li>
                         </ul>
                     </li>
@@ -169,7 +169,7 @@
                                     <small>Administrare</small>
                                 </div>
                                 <div class="card-body card-block">
-                                <form:form method="post" action="${contextPath}/salvareMeniu" modelAttribute="meniuForm" class="form-signin">
+                                <form:form method="post" action="${contextPath}/salvareMeniu" modelAttribute="menuForm" class="form-signin">
                                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
                                     <spring:bind path="id">
@@ -187,16 +187,16 @@
                                                         <label for="stare" class=" form-control-label">Stare</label>
                                                 <form:select id="stare" path="stare" name="stare" class="form-control">
                                                         <option value="0" >Alegeti starea</option>
-                                                    <c:if test="${meniuForm.stare=='0'}">
+                                                    <c:if test="${menuForm.stare=='0'}">
 
                                                         <option value="activ" >Activ</option>
                                                         <option value="inactiv">Inactiv</option>
                                                     </c:if>
-                                                    <c:if test="${meniuForm.stare=='activ'}">
+                                                    <c:if test="${menuForm.stare=='activ'}">
                                                         <option value="activ" selected >Activ</option>
                                                         <option value="inactiv">Inactiv</option>
                                                     </c:if>
-                                                    <c:if test="${meniuForm.stare=='inactiv'}">
+                                                    <c:if test="${menuForm.stare=='inactiv'}">
                                                         <option value="activ" >Activ</option>
                                                         <option value="inactiv" selected>Inactiv</option>
                                                     </c:if>

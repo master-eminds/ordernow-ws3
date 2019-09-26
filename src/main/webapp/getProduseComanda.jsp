@@ -476,10 +476,10 @@
                                         <tbody>
                                         <c:forEach var="item" items="${listaProduse}">
                                             <tr>
-                                                <td>${item.produs.denumire}</td>
-                                                <td>${item.produs.pret}</td>
+                                                <td>${item.product.denumire}</td>
+                                                <td>${item.product.pret}</td>
                                                 <td>${item.cantitate}</td>
-                                                <td>${item.produs.pret * item.cantitate}</td>
+                                                <td>${item.product.pret * item.cantitate}</td>
 
                                             </tr>
                                         </c:forEach>

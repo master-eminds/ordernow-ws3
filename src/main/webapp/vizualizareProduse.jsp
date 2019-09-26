@@ -84,7 +84,7 @@
                                         <a class="nav-link" href="/vizualizareMeniuri" >Vizualizare meniuri</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/administrareMeniu/0">Adaugare meniu</a>
+                                        <a class="nav-link" href="/administrareMeniu/0">Adaugare menu</a>
                                     </li>
 
 
@@ -182,7 +182,7 @@
                                         <tbody>
                                         <c:forEach var="item" items="${listaProduse}">
                                             <tr>
-                                                <td>${item.produs.denumire}</td>
+                                                <td>${item.product.denumire}</td>
                                                 <td>${item.cantitate}</td>
                                                 <td>${item.valoare/item.cantitate}</td>
                                                 <td>${item.valoare}</td>

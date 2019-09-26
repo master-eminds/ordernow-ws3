@@ -85,7 +85,7 @@
                                         <a class="nav-link" href="/vizualizareMeniuri" >Vizualizare meniuri</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/administrareMeniu/0">Adaugare meniu</a>
+                                        <a class="nav-link" href="/administrareMeniu/0">Adaugare menu</a>
                                     </li>
 
 
@@ -213,12 +213,12 @@
                                         </tr>
                                         <tbody>
 
-                                        <c:forEach var="produs" items="${listaProduse}">
-                                            <c:if test="${noteProdus.get(produs.id)!=null}">
+                                        <c:forEach var="product" items="${listaProduse}">
+                                            <c:if test="${noteProdus.get(product.id)!=null}">
 
-                                                <td>${produs.denumire}</td>
+                                                <td>${product.denumire}</td>
                                                 <td>
-                                                    <a href="/vizualizareReviewProdus/${produs.id}"><i class="fas fa-eye"></i></a>
+                                                    <a href="/vizualizareReviewProdus/${product.id}"><i class="fas fa-eye"></i></a>
                                                 </td>
                                         </c:if>
                                             </tr>

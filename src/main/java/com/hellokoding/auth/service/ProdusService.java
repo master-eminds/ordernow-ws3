@@ -1,6 +1,7 @@
 package com.hellokoding.auth.service;
 
-import com.hellokoding.auth.model.Produs;
+import com.hellokoding.auth.model.InfoProduct;
+import com.hellokoding.auth.model.Product;
 import com.hellokoding.auth.util.CountProdus;
 
 import java.util.List;
@@ -8,15 +9,15 @@ import java.util.List;
 public interface ProdusService {
 
 
-    Produs save(Produs produs);
-    Produs saveOrUpdate(Produs produs);
+    Product save(Product product);
+    Product saveOrUpdate(Product product);
     void delete(Long id);
-    List<Produs> findAll();
+    List<Product> findAll();
     List<CountProdus> numarProduseComandate();
-    List<Produs> findAllByVizibilitate(Long categorieId, String vizibilitate);
-    List<Produs> findAllByCategorie(Long categorieId);
+    List<Product> findAllByVizibilitate(Long categorieId, String vizibilitate);
+    List<InfoProduct> findAllByCategorie(Long categorieId);
 
 
-    Produs findById(Long id);
+    Product findById(Long id);
 
 }

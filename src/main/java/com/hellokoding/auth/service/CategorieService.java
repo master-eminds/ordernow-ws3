@@ -1,18 +1,18 @@
 package com.hellokoding.auth.service;
 
-import com.hellokoding.auth.model.Categorie;
+import com.hellokoding.auth.model.Category;
+import com.hellokoding.auth.model.InfoCategory;
 
 import java.util.List;
 
 public interface CategorieService {
 
-    Categorie save(Categorie categorie);
+    Category save(Category category);
     void delete(Long id);
     void stergeCategorie(Long id);
-    Categorie findById(Long id);
-    List<Categorie> findAll();
+    Category findById(Long id);
+    List<Category> findAll();
 
-    List<Categorie> findAllByMeniuId(Long meniu_id);
+    List<InfoCategory> findAllInfoByMeniuId(Long meniu_id);
 
-    List<Categorie> findAllByVizibilitate(Long meniuId,String vizibilitate);
     }

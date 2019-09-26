@@ -3,6 +3,8 @@ package com.hellokoding.auth.web;
 import com.hellokoding.auth.model.InfoRestaurant;
 import com.hellokoding.auth.model.Restaurant;
 import com.hellokoding.auth.model.list.InfoRestaurantList;
+import com.hellokoding.auth.service.CommentService;
+import com.hellokoding.auth.service.ImageService;
 import com.hellokoding.auth.service.RestaurantService;
 import com.hellokoding.auth.util.BaseModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,10 @@ public class RestaurantController {
 
     @Autowired
     private RestaurantService restaurantService;
-
+    @Autowired
+    private ImageService imageService;
+    @Autowired
+    private CommentService commentService;
     //--------ADD/EDIT RESTAURANT----------
     @RequestMapping(value = "/salvareRestaurant", method = RequestMethod.POST)
     public Restaurant salveazaRestaurant(@RequestBody Restaurant restaurant) {
@@ -45,15 +50,18 @@ public class RestaurantController {
     }
 
     //-------GET LISTA RESTAURANTE--------
-    @RequestMapping(value = "/vizualizareRestaurante", method = RequestMethod.GET)
+    @RequestMapping(value = "/getRestaurants", method = RequestMethod.GET)
     @ResponseBody
-    public InfoRestaurantList getRestaurante() {
-        List<Restaurant> restaurante=new ArrayList<>();
+    public InfoRestaurantList getRestaurants() {
         InfoRestaurantList infoRestaurantList = new InfoRestaurantList();
         List<InfoRestaurant> infoRestaurante = new ArrayList<>();
-        //find personalizat
         try{
             infoRestaurante = restaurantService.getInfoAllRestaurants();
+            for(InfoRestaurant restaurant: infoRestaurante){
+                restaurant.setImages(imageService.findAllByIdRestaurant(restaurant.getId()));
+                restaurant.setNrComments(commentService.findNrByIdRestaurant(restaurant.getId()));
+            }
+
             infoRestaurantList.setResult("OK");
         }
         catch (Exception e){

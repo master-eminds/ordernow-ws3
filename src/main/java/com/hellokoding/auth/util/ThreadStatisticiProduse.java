@@ -1,6 +1,6 @@
 package com.hellokoding.auth.util;
 
-import com.hellokoding.auth.model.Produs;
+import com.hellokoding.auth.model.Product;
 import com.hellokoding.auth.model.Review;
 import com.hellokoding.auth.service.ProdusService;
 import com.hellokoding.auth.service.ReviewService;
@@ -61,10 +61,10 @@ public class ThreadStatisticiProduse implements DisposableBean, Runnable {
 
         }
     }
-    private String dateChartProduse (List<Produs> produses){
+    private String dateChartProduse (List<Product> products){
         int counterLow = 0;
         int counterHigh = 0;
-        for(Produs p: produses) {
+        for(Product p: products) {
             if(Global.reviewProduse==null||Global.reviewProduse.size()==0||!Global.reviewProduse.containsKey(p.getId())){
                 Global.reviewProduse.put(p.getId(),reviewService.findByIdProdus(p.getId()));
             }

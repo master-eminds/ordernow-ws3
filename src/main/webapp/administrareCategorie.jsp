@@ -13,7 +13,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Administrare categorie</title>
+    <title>Administrare category</title>
 
     <!-- Fontfaces CSS-->
     <link href="${contextPath}/resources/tema/css/font-face.css" rel="stylesheet" media="all">
@@ -67,7 +67,7 @@
                                 <a href="${contextPath}/vizualizareMeniuri">Vizualizare meniuri</a>
                             </li>
                             <li>
-                                <a href="${contextPath}/administrareMeniu/0">Adaugare meniu</a>
+                                <a href="${contextPath}/administrareMeniu/0">Adaugare menu</a>
                             </li>
 
                         </ul>
@@ -119,7 +119,7 @@
                                 <a href="/vizualizareMeniuri" >Vizualizare meniuri</a>
                             </li>
                             <li >
-                                <a  href="/administrareMeniu/0">Adaugare meniu</a>
+                                <a  href="/administrareMeniu/0">Adaugare menu</a>
                             </li>
                         </ul>
                     </li>
@@ -168,7 +168,7 @@
                                     <small>Administrare</small>
                                 </div>
                                 <div class="card-body card-block">
-                                <form:form method="post" action="${contextPath}/salvareCategorie/${meniu_id}" modelAttribute="categorieForm" class="form-signin">
+                                <form:form method="post" action="${contextPath}/salvareCategorie/${meniu_id}" modelAttribute="categoryForm" class="form-signin">
                                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
                                     <spring:bind path="id">
@@ -188,15 +188,15 @@
                                                             <label for="vizibilitate" class=" form-control-label">Vizibilitate</label>
                                                             <form:select id="vizibilitate" path="vizibilitate" name="vizibilitate" class="form-control">
                                                                 <option value="0" >Alegeti vizibilitatea</option>
-                                                                <c:if test="${ categorieForm.vizibilitate=='0'}">
+                                                                <c:if test="${ categoryForm.vizibilitate=='0'}">
                                                                     <option value="vizibil" >Vizibil</option>
                                                                     <option value="invizibil">Invizibil</option>
                                                                 </c:if>
-                                                                <c:if test="${categorieForm.vizibilitate=='vizibil'}">
+                                                                <c:if test="${categoryForm.vizibilitate=='vizibil'}">
                                                                     <option value="vizibil" selected >Vizibil</option>
                                                                     <option value="invizibil">Invizibil</option>
                                                                 </c:if>
-                                                                <c:if test="${categorieForm.vizibilitate=='invizibil'}">
+                                                                <c:if test="${categoryForm.vizibilitate=='invizibil'}">
                                                                     <option value="vizibil" >Vizibil</option>
                                                                     <option value="invizibil" selected>Invizibil</option>
                                                                 </c:if>
