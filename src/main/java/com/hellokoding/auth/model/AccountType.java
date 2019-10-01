@@ -11,10 +11,13 @@ import static javax.persistence.CascadeType.ALL;
 @Table(name = "produse")
 public class AccountType extends BaseModel {
     private Long id;
-    private String type;
+    private Integer type;
     private String code;
+    private String description;
     private Integer active;
-
+    //0= incongito
+    //1= gmail
+    //2=facebook
 
 
     @Id
@@ -27,12 +30,20 @@ public class AccountType extends BaseModel {
         this.id = id;
     }
 
-    public String getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Integer type) {
         this.type = type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getCode() {

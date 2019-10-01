@@ -14,7 +14,10 @@ public class Global {
     public static Rol rol;
     public static List<Comanda> listaComenzi= new ArrayList<>();
 
-
+    public static String createToken() {
+        String token="tooken";
+        return token;
+    }
     public static String criptare(String data, String password) throws Exception{
         SecretKeySpec key= generateKey(password);
         Cipher cipher=Cipher.getInstance(AES);
