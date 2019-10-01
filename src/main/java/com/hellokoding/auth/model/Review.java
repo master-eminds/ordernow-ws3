@@ -7,10 +7,12 @@ import javax.persistence.*;
 public class Review {
 
     private Long id;
-    private String comentariu;
-    private float nota;
-    private Product product;
-    private Ospatar ospatar;
+    private Long restaurantId;
+    private Long userId;
+    private Long waiterId;
+    private Long productId;
+    private String comment;
+    private int like;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,38 +24,51 @@ public class Review {
         this.id = id;
     }
 
-    public String getComentariu() {
-        return comentariu;
+    public Long getRestaurantId() {
+        return restaurantId;
     }
 
-    public void setComentariu(String comentariu) {
-        this.comentariu = comentariu;
+    public void setRestaurantId(Long restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
-    public float getNota() {
-        return nota;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setNota(float nota) {
-        this.nota = nota;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    @ManyToOne
-    @JoinColumn(name="id_produs", nullable=false)
-    public Product getProduct() {
-        return product;
+    public String getComment() {
+        return comment;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-    @ManyToOne
-    @JoinColumn(name="id_ospatar", nullable=false)
-    public Ospatar getOspatar() {
-        return ospatar;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
-    public void setOspatar(Ospatar ospatar) {
-        this.ospatar = ospatar;
+    public int getLike() {
+        return like;
+    }
+
+    public void setLike(int like) {
+        this.like = like;
+    }
+
+    public Long getWaiterId() {
+        return waiterId;
+    }
+
+    public void setWaiterId(Long waiterId) {
+        this.waiterId = waiterId;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 }

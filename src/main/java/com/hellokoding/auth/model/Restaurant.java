@@ -18,9 +18,8 @@ public class Restaurant extends BaseModel {
     private int onlineOrder;
     private int qrCode;
     private int active;
-    private List<Comment> comments;
-    private int likes;
-    private int meniu_id;
+    private int reviewId;
+    private int menuId;
 
     private List<Admin> admini;
     private List<Ospatar> ospatari;
@@ -36,12 +35,20 @@ public class Restaurant extends BaseModel {
         this.admini = admini;
     }
 
-    public int getMeniu_id() {
-        return meniu_id;
+    public int getReviewId() {
+        return reviewId;
     }
 
-    public void setMeniu_id(int meniu_id) {
-        this.meniu_id = meniu_id;
+    public void setReviewId(int reviewId) {
+        this.reviewId = reviewId;
+    }
+
+    public int getMenuId() {
+        return menuId;
+    }
+
+    public void setMenuId(int menuId) {
+        this.menuId = menuId;
     }
 
     @OneToMany(cascade=ALL, mappedBy="restaurant")
@@ -134,19 +141,5 @@ public class Restaurant extends BaseModel {
         this.active = active;
     }
 
-    public List<Comment> getComments() {
-        return comments;
-    }
 
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
-    public int getLikes() {
-        return likes;
-    }
-
-    public void setLikes(int likes) {
-        this.likes = likes;
-    }
 }

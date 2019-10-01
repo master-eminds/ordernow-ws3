@@ -21,8 +21,17 @@ public class ReviewServiceImpl implements ReviewService {
     public List<Review> findByIdProdus(Long idProdus) {
 
         List reviews = em.createNativeQuery(
-                "select * from review where id_produs=:idProdus", Review.class)
-                .setParameter("idProdus", idProdus)
+                "select * from review where id_produs=:1", Review.class)
+                .setParameter(1, idProdus)
+                .getResultList();
+        return reviews;
+    }
+
+    @Override
+    public List<Review> findByIdRestaurant(Long id) {
+        List reviews = em.createNativeQuery(
+                "select * from review where id_restaurant=:1", Review.class)
+                .setParameter(1, id)
                 .getResultList();
         return reviews;
     }
@@ -30,8 +39,8 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public List<Review> findByIdOspatar(Long idOspatar) {
         List reviews = em.createNativeQuery(
-                "select * from review where id_ospatar=:idOspatar", Review.class)
-                .setParameter("idOspatar", idOspatar)
+                "select * from review where id_ospatar=:1", Review.class)
+                .setParameter(1, idOspatar)
                 .getResultList();
         return reviews;    }
 
