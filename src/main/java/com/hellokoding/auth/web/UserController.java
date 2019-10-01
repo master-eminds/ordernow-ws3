@@ -23,7 +23,7 @@ public class UserController {
 
 
     //-----ADD OSPATAR-----
-    @RequestMapping(value = "/registerUser/{token}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/registerUser/{token}", method = RequestMethod.POST)
     @ResponseBody
     public User registerUser(@RequestBody User user, @PathVariable String token) {
         //gmail/facebook
@@ -47,21 +47,22 @@ public class UserController {
         return user;
     }
 /*
-    //----- EDIT OSPATAR-----
-    @RequestMapping(value = "/editOspatar", method = RequestMethod.PUT)
+    //----- EDIT USER   -----
+    @RequestMapping(value = "/editUser/{newToken}", method = RequestMethod.PUT)
     @ResponseBody
-    public Ospatar editOspatar(@RequestBody Ospatar ospatar) {
-        Ospatar ospatarInfo= new Ospatar();
+    public User editUser(@RequestBody User user, @PathVariable String newToken) {
+        User userInfo= new User();
         try{
-            ospatarService.update(ospatar);
-            ospatarInfo.setResult("OK");
+            userService.updateUserAccount(user,newToken);
+            userInfo.setResult("OK");
         } catch (Exception e) {
             e.printStackTrace();
-            ospatarInfo.setResult("ERR");
+            userInfo.setResult("ERR");
         }
-        return ospatarInfo;
-    }
-    //------DELETE OSPATAR
+        return userInfo;
+    }*/
+
+/*    //------DELETE OSPATAR
     @RequestMapping(value = "/deleteOspatar/{id}", method = RequestMethod.PUT)
     public BaseModel deleteOspatar(@PathVariable("id") Long id) {
         BaseModel resp = new BaseModel();

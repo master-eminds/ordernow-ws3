@@ -58,6 +58,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void updateUserAccount(User user, String newToken) {
+
+    }
+
+    @Override
     public List<User> findAll() {
         return userRepository.findAll();
     }
