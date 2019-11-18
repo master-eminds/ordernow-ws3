@@ -20,9 +20,9 @@ public class MeniuValidator implements Validator {
         Menu menu = (Menu) o;
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "denumire", "NotEmpty");
 
-        if (menu.getStare().equals("0")) {
+    /*    if (menu.getStare().equals("0")) {
             errors.rejectValue("stare", "Select.meniuForm.stare");
-        }
+        }*/
         if (menu.getImage()==null|| menu.getImage().length==0|| menu.getImage().toString().isEmpty()) {
             errors.rejectValue("image", "Empty.meniuForm.image");
         }

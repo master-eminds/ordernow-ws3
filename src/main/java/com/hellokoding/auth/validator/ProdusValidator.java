@@ -24,7 +24,7 @@ public class ProdusValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "descriere", "NotEmpty");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "pret", "NotEmpty");
 
-        String ingrediente= product.getIngrediente();
+       /* String ingrediente= product.getIngrediente();
         boolean gresit=false;
         if(ingrediente.length()>=2){
             if(!ingrediente.substring(0,1).equals("(")){
@@ -48,7 +48,7 @@ public class ProdusValidator implements Validator {
         }
         if (product.getImagine()==null|| product.getImagine().length==0|| product.getImagine().toString().isEmpty()) {
             errors.rejectValue("imagine", "Empty.meniuForm.image");
-        }
+        }*/
     }
 
 }
