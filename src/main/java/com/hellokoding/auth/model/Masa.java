@@ -12,7 +12,7 @@ import static javax.persistence.CascadeType.ALL;
 public class Masa extends BaseModel {
     private Long id;
     private List<Comanda> comenzi;
-    private int sters;
+    private Integer sters;
     private Restaurant restaurant;
     @ManyToOne
     @JoinColumn(name="restaurant_id", nullable=false)
@@ -41,11 +41,11 @@ public class Masa extends BaseModel {
         this.comenzi = comenzi;
     }
 
-    public int getSters() {
+    public Integer getSters() {
         return sters;
     }
 
-    public void setSters(int sters) {
+    public void setSters(Integer sters) {
         this.sters = sters;
     }
 }

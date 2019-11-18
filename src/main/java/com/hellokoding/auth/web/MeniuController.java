@@ -79,7 +79,7 @@ public class MeniuController {
             Menu m = meniuService.findById(id);
             model.addObject("meniuForm",m);
             model.addObject("add","false");
-            model.addObject("imageSrc",new String(m.getImage()));
+            model.addObject("imageSrc",new String(m.getImage().getByteImage()));
 
         }
         return model;

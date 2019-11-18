@@ -17,8 +17,9 @@ public class Menu extends BaseModel {
     private List<Offer> offers;
     @Lob @Basic(fetch = FetchType.LAZY)
     @Column(length=100000)
-    private byte[] image;
-    private int active;
+    private Image image;
+
+    private Integer active;
 
 
     @Id
@@ -55,15 +56,18 @@ public class Menu extends BaseModel {
     public void setOffers(List<Offer> offers) {
         this.offers = offers;
     }
+
     @ManyToOne
     @JoinColumn(name="image_id", nullable=false)
-    public byte[] getImage() {
+    public Image getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(Image image) {
         this.image = image;
     }
+
+
 
     public String getDescription() {
         return description;
@@ -73,11 +77,11 @@ public class Menu extends BaseModel {
         this.description = description;
     }
 
-    public int getActive() {
+    public Integer getActive() {
         return active;
     }
 
-    public void setActive(int active) {
+    public void setActive(Integer active) {
         this.active = active;
     }
 }

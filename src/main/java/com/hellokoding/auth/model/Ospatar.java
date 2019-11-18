@@ -4,6 +4,7 @@ package com.hellokoding.auth.model;
 import com.hellokoding.auth.util.BaseModel;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 import java.util.Set;
 
@@ -21,7 +22,7 @@ public class Ospatar extends BaseModel implements Comparable{
     private String status;
     private List<Review> reviews;
     private List<Comanda> listaComenzi;
-    private int sters;
+    private Integer sters;
     private Restaurant restaurant;
     @ManyToOne
     @JoinColumn(name="restaurant_id", nullable=false)
@@ -107,11 +108,11 @@ public class Ospatar extends BaseModel implements Comparable{
         return this.getNume().compareTo(ospatar.getNume());
     }
 
-    public int getSters() {
+    public Integer getSters() {
         return sters;
     }
 
-    public void setSters(int sters) {
+    public void setSters(Integer sters) {
         this.sters = sters;
     }
 }

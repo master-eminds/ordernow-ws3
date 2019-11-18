@@ -24,10 +24,8 @@ public class Product extends BaseModel {
 
     private Category category;
     private Menu menu;
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
-    @Column(length = 100000)
-    private byte[] image;
+
+    private Image image;
     //private Long categoryId;
     //private Long meniuId;
 
@@ -109,15 +107,18 @@ public class Product extends BaseModel {
     public void setActive(String active) {
         this.active = active;
     }
+
     @OneToOne
     @JoinColumn(name="image_id", nullable=false)
-    public byte[] getImage() {
+    public Image getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(Image image) {
         this.image = image;
     }
+
+
     @ManyToOne
     @JoinColumn(name="menu_id", nullable=false)
     public Menu getMenu() {

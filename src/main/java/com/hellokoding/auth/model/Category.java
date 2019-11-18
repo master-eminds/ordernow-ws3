@@ -13,13 +13,12 @@ public class Category {
     private String name;
     private String description;
     private List<Product> products;
-    @Lob @Basic(fetch = FetchType.LAZY)
-    @Column(length=100000)
-    private byte[] image;
 
+
+    private Image image;
     private Menu menu;
     //private int menu_id;
-    private int active;
+    private Integer active;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -55,14 +54,16 @@ public class Category {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public byte[] getImage() {
+    @ManyToOne
+    @JoinColumn(name="image_id", nullable=false)
+    public Image getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(Image image) {
         this.image = image;
     }
+
     @ManyToOne
     @JoinColumn(name="menu_id", nullable=false)
     public Menu getMenu() {
@@ -73,11 +74,11 @@ public class Category {
         this.menu = menu;
     }
 
-    public int getActive() {
+    public Integer getActive() {
         return active;
     }
 
-    public void setActive(int active) {
+    public void setActive(Integer active) {
         this.active = active;
     }
 }

@@ -13,10 +13,9 @@ public class Offer {
     private String name;
     private String description;
     private List<Product> products;
-    @Lob @Basic(fetch = FetchType.LAZY)
-    @Column(length=100000)
-    private byte[] image;
-    private int active;
+
+    private Image image;
+    private Integer active;
     private Double price;
 
     @Id
@@ -52,21 +51,22 @@ public class Offer {
     public void setProducts(List<Product> products) {
         this.products = products;
     }
+
     @ManyToOne
     @JoinColumn(name="image_id", nullable=false)
-    public byte[] getImage() {
+    public Image getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(Image image) {
         this.image = image;
     }
 
-    public int getActive() {
+    public Integer getActive() {
         return active;
     }
 
-    public void setActive(int active) {
+    public void setActive(Integer active) {
         this.active = active;
     }
 
