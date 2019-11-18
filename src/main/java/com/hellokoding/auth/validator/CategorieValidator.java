@@ -19,13 +19,13 @@ public class CategorieValidator implements Validator {
     public void validate(Object o, Errors errors) {
         Category category = (Category) o;
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "denumire", "NotEmpty");
-
+/*
         if (!category.getVizibilitate().equals("vizibil")&&!category.getVizibilitate().equals("invizibil")) {
             errors.rejectValue("vizibilitate", "Select.categorieForm.vizibilitate");
         }
         if (category.getImagine()==null|| category.getImagine().length==0|| category.getImagine().toString().isEmpty()) {
             errors.rejectValue("imagine", "Empty.meniuForm.image");
-        }
+        }*/
     }
 
 }
