@@ -60,7 +60,7 @@ public class ThreadMeniuriSiCategorii implements DisposableBean, Runnable {
 
     @Override
     public void run(){
-        while(someCondition){
+       /* while(someCondition){
             Global.listaMeniuri=meniuService.findAll();
             Global.mapCategoriiByMeniu= new HashMap<>();
             Global.mapProduseByCategorie= new HashMap<>();
@@ -73,7 +73,7 @@ public class ThreadMeniuriSiCategorii implements DisposableBean, Runnable {
             }
             if(Global.listaMese!=null && Global.mapCategoriiByMeniu.size()!=0 && Global.mapProduseByCategorie.size()!=0)
                 someCondition =false;
-        }
+        }*/
     }
 
     @Override

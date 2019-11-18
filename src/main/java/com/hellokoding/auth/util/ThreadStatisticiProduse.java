@@ -51,7 +51,7 @@ public class ThreadStatisticiProduse implements DisposableBean, Runnable {
 
     @Override
     public void run(){
-        while(someCondition){
+      /*  while(someCondition){
             Global.listaProduse=produsService.findAll();
             Global.dateChartReviewProduse= dateChartProduse(Global.listaProduse);
 
@@ -59,8 +59,9 @@ public class ThreadStatisticiProduse implements DisposableBean, Runnable {
                 someCondition =false;
 
 
-        }
+        }*/
     }
+/*
     private String dateChartProduse (List<Product> products){
         int counterLow = 0;
         int counterHigh = 0;
@@ -83,6 +84,7 @@ public class ThreadStatisticiProduse implements DisposableBean, Runnable {
 
         return counterLow+";"+counterHigh;
     }
+*/
 
     @Override
     public void destroy(){
