@@ -3,6 +3,7 @@ package com.hellokoding.auth.model;
 import com.hellokoding.auth.util.BaseModel;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 import static javax.persistence.CascadeType.ALL;
@@ -19,13 +20,16 @@ public class Product extends BaseModel {
     private String ingredients;
     private String active;
 
+    private List<Review> reviews;
+
+    private Category category;
+    private Menu menu;
     @Lob
     @Basic(fetch = FetchType.LAZY)
     @Column(length = 100000)
     private byte[] image;
-    private Long categoryId;
-    private Set<Review> reviews;
-    private Long meniuId;
+    //private Long categoryId;
+    //private Long meniuId;
 
     public Product() {
     }
@@ -40,15 +44,15 @@ public class Product extends BaseModel {
     public void setId(Long id) {
         this.id = id;
     }
-
     @OneToMany(cascade = ALL, mappedBy = "produs")
-    public Set<Review> getReviews() {
+    public List<Review> getReviews() {
         return reviews;
     }
 
-    public void setReviews(Set<Review> reviews) {
+    public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
+
 
     public String getName() {
         return name;
@@ -105,7 +109,8 @@ public class Product extends BaseModel {
     public void setActive(String active) {
         this.active = active;
     }
-
+    @OneToOne
+    @JoinColumn(name="image_id", nullable=false)
     public byte[] getImage() {
         return image;
     }
@@ -113,20 +118,23 @@ public class Product extends BaseModel {
     public void setImage(byte[] image) {
         this.image = image;
     }
-
-    public Long getCategoryId() {
-        return categoryId;
+    @ManyToOne
+    @JoinColumn(name="menu_id", nullable=false)
+    public Menu getMenu() {
+        return menu;
     }
 
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 
-    public Long getMeniuId() {
-        return meniuId;
+    @ManyToOne
+    @JoinColumn(name="category_id", nullable=false)
+    public Category getCategory() {
+        return category;
     }
 
-    public void setMeniuId(Long meniuId) {
-        this.meniuId = meniuId;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

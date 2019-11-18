@@ -17,7 +17,8 @@ public class Category {
     @Column(length=100000)
     private byte[] image;
 
-    private int menu_id;
+    private Menu menu;
+    //private int menu_id;
     private int active;
 
     @Id
@@ -62,13 +63,14 @@ public class Category {
     public void setImage(byte[] image) {
         this.image = image;
     }
-
-    public int getMenu_id() {
-        return menu_id;
+    @ManyToOne
+    @JoinColumn(name="menu_id", nullable=false)
+    public Menu getMenu() {
+        return menu;
     }
 
-    public void setMenu_id(int menu_id) {
-        this.menu_id = menu_id;
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 
     public int getActive() {

@@ -14,13 +14,16 @@ public class Restaurant extends BaseModel {
     private String name;
     private String subTitle;
     private String description;
-    private List<Image> images;
     private int onlineOrder;
     private int qrCode;
     private int active;
-    private int reviewId;
-    private int menuId;
 
+  /*  private int reviewId;
+    private int menuId;
+    */
+    private Review review;
+    private Menu menu;
+    private List<Image> images;
     private List<Admin> admini;
     private List<Ospatar> ospatari;
     private List<Masa> mese;
@@ -34,21 +37,23 @@ public class Restaurant extends BaseModel {
     public void setAdmini(List<Admin> admini) {
         this.admini = admini;
     }
-
-    public int getReviewId() {
-        return reviewId;
+    @ManyToOne
+    @JoinColumn(name="review_id", nullable=false)
+    public Review getReview() {
+        return review;
     }
 
-    public void setReviewId(int reviewId) {
-        this.reviewId = reviewId;
+    public void setReview(Review review) {
+        this.review = review;
+    }
+    @ManyToOne
+    @JoinColumn(name="menu_id", nullable=false)
+    public Menu getMenu() {
+        return menu;
     }
 
-    public int getMenuId() {
-        return menuId;
-    }
-
-    public void setMenuId(int menuId) {
-        this.menuId = menuId;
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 
     @OneToMany(cascade=ALL, mappedBy="restaurant")

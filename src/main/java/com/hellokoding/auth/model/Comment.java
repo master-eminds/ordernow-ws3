@@ -9,7 +9,8 @@ import static javax.persistence.CascadeType.ALL;
 @Table(name="comentarii")
 public class Comment {
     private Long id;
-    private Long idRestaurant;
+    //private Long idRestaurant;
+    private Restaurant restaurant;
     private String message;
     private String idUser;
 
@@ -22,13 +23,14 @@ public class Comment {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public Long getIdRestaurant() {
-        return idRestaurant;
+    @ManyToOne
+    @JoinColumn(name="restaurant_id", nullable=false)
+    public Restaurant getRestaurant() {
+        return restaurant;
     }
 
-    public void setIdRestaurant(Long idRestaurant) {
-        this.idRestaurant = idRestaurant;
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     public String getMessage() {

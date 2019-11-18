@@ -4,6 +4,7 @@ package com.hellokoding.auth.model;
 import com.hellokoding.auth.util.BaseModel;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 import static javax.persistence.CascadeType.ALL;
@@ -18,8 +19,8 @@ public class Ospatar extends BaseModel implements Comparable{
     private String parola;
     private String passwordConfirm;
     private String status;
-    private Set<Review> reviews;
-    private Set<Comanda> listaComenzi;
+    private List<Review> reviews;
+    private List<Comanda> listaComenzi;
     private int sters;
     private Restaurant restaurant;
     @ManyToOne
@@ -64,22 +65,24 @@ public class Ospatar extends BaseModel implements Comparable{
     public void setParola(String parola) {
         this.parola = parola;
     }
-    @OneToMany(cascade=ALL, mappedBy="ospatar")
-    public Set<Review> getReviews() {
+    @OneToMany(cascade=ALL, mappedBy="review")
+    public List<Review> getReviews() {
         return reviews;
     }
 
-    public void setReviews(Set<Review> reviews) {
+    public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
-    @OneToMany(cascade=ALL, mappedBy="ospatar")
-    public Set<Comanda> getListaComenzi() {
+
+    @OneToMany(cascade=ALL, mappedBy="comanda")
+    public List<Comanda> getListaComenzi() {
         return listaComenzi;
     }
 
-    public void setListaComenzi(Set<Comanda> listaComenzi) {
+    public void setListaComenzi(List<Comanda> listaComenzi) {
         this.listaComenzi = listaComenzi;
     }
+
 
     @Transient
     public String getPasswordConfirm() {

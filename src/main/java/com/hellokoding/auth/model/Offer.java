@@ -3,6 +3,8 @@ package com.hellokoding.auth.model;
 import javax.persistence.*;
 import java.util.List;
 
+import static javax.persistence.CascadeType.ALL;
+
 @Entity
 @Table(name="oferte")
 public class Offer {
@@ -42,7 +44,7 @@ public class Offer {
     public void setDescription(String description) {
         this.description = description;
     }
-
+    @OneToMany(cascade = ALL, mappedBy = "offer")
     public List<Product> getProducts() {
         return products;
     }
@@ -50,7 +52,8 @@ public class Offer {
     public void setProducts(List<Product> products) {
         this.products = products;
     }
-
+    @ManyToOne
+    @JoinColumn(name="image_id", nullable=false)
     public byte[] getImage() {
         return image;
     }

@@ -33,7 +33,6 @@ public class Masa extends BaseModel {
         this.id = id;
     }
     @OneToMany(fetch = FetchType.EAGER,cascade=ALL, mappedBy="masa")
-
     public List<Comanda> getComenzi() {
         return comenzi;
     }

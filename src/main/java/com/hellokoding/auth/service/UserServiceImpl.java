@@ -8,7 +8,6 @@ import com.hellokoding.auth.util.Global;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import sun.nio.cs.US_ASCII;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

@@ -12,7 +12,8 @@ public class Image {
     @Lob @Basic(fetch = FetchType.LAZY)
     @Column(length=100000)
     private byte[]byteImage;
-    private Long restaurantId;
+   // private Long restaurantId;
+    private Restaurant restaurant;
     private String title;
 
     @Id
@@ -33,12 +34,21 @@ public class Image {
         this.byteImage = byteImage;
     }
 
-    public Long getRestaurantId() {
+  /*  public Long getRestaurantId() {
         return restaurantId;
     }
 
     public void setRestaurantId(Long restaurantId) {
         this.restaurantId = restaurantId;
+    }*/
+  @ManyToOne
+  @JoinColumn(name="restaurant_id", nullable=false)
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     public String getTitle() {

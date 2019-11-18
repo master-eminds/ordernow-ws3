@@ -55,7 +55,8 @@ public class Menu extends BaseModel {
     public void setOffers(List<Offer> offers) {
         this.offers = offers;
     }
-
+    @ManyToOne
+    @JoinColumn(name="image_id", nullable=false)
     public byte[] getImage() {
         return image;
     }
