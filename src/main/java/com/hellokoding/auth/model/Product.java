@@ -24,6 +24,7 @@ public class Product extends BaseModel {
 
     private Category category;
     private Menu menu;
+    private Offer offer;
 
     private Image image;
     //private Long categoryId;
@@ -42,7 +43,7 @@ public class Product extends BaseModel {
     public void setId(Long id) {
         this.id = id;
     }
-    @OneToMany(cascade = ALL, mappedBy = "produs")
+    @OneToMany(cascade = ALL, mappedBy = "product")
     public List<Review> getReviews() {
         return reviews;
     }
@@ -137,5 +138,14 @@ public class Product extends BaseModel {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+    @ManyToOne
+    @JoinColumn(name="offer_id", nullable=false)
+    public Offer getOffer() {
+        return offer;
+    }
+
+    public void setOffer(Offer offer) {
+        this.offer = offer;
     }
 }

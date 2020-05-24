@@ -66,7 +66,7 @@ public class Ospatar extends BaseModel implements Comparable{
     public void setParola(String parola) {
         this.parola = parola;
     }
-    @OneToMany(cascade=ALL, mappedBy="review")
+    @OneToMany(cascade=ALL, mappedBy="waiter")
     public List<Review> getReviews() {
         return reviews;
     }
@@ -75,7 +75,7 @@ public class Ospatar extends BaseModel implements Comparable{
         this.reviews = reviews;
     }
 
-    @OneToMany(cascade=ALL, mappedBy="comanda")
+    @OneToMany(cascade=ALL, mappedBy="ospatar")
     public List<Comanda> getListaComenzi() {
         return listaComenzi;
     }

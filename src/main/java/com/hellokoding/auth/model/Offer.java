@@ -17,6 +17,8 @@ public class Offer {
     private Image image;
     private Integer active;
     private Double price;
+    private Menu menu;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -51,7 +53,15 @@ public class Offer {
     public void setProducts(List<Product> products) {
         this.products = products;
     }
+    @ManyToOne
+    @JoinColumn(name="menu_id", nullable=false)
+    public Menu getMenu() {
+        return menu;
+    }
 
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
     @ManyToOne
     @JoinColumn(name="image_id", nullable=false)
     public Image getImage() {

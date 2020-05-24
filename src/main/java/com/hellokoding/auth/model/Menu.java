@@ -32,7 +32,7 @@ public class Menu extends BaseModel {
         this.id = id;
     }
 
-    @OneToMany(cascade=ALL, mappedBy="meniu")
+    @OneToMany(cascade=ALL, mappedBy="menu")
     public List<Category> getCategories() {
         return categories;
     }
@@ -48,7 +48,7 @@ public class Menu extends BaseModel {
     public void setName(String name) {
         this.name = name;
     }
-    @OneToMany(cascade=ALL, mappedBy="meniu")
+    @OneToMany(cascade=ALL, mappedBy="menu")
     public List<Offer> getOffers() {
         return offers;
     }

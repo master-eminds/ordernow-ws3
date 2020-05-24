@@ -30,7 +30,7 @@ public class Category {
         this.id = id;
     }
 
-    @OneToMany(cascade=ALL, mappedBy="categorie")
+    @OneToMany(cascade=ALL, mappedBy="category")
     public List<Product> getProducts() {
         return products;
     }
