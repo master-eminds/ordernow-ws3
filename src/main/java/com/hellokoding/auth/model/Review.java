@@ -12,7 +12,7 @@ public class Review {
     private Long waiterId;
     private Long productId;*/
     private String comment;
-    private int like;
+    private Long like_vote;
 
     private User user;
     private Restaurant restaurant;
@@ -38,13 +38,14 @@ public class Review {
         this.comment = comment;
     }
 
-    public int getLike() {
-        return like;
+    public Long getLike_vote() {
+        return like_vote;
     }
 
-    public void setLike(int like) {
-        this.like = like;
+    public void setLike_vote(Long like_vote) {
+        this.like_vote = like_vote;
     }
+
     @ManyToOne
     @JoinColumn(name="user_id", nullable=false)
     public User getUser() {
